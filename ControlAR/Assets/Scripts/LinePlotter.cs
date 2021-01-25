@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
+using System.Linq;
 
 public class LinePlotter : MonoBehaviour
 {
-
     // Name of the input file, no extension
     public string inputfile;
 
-
+    public Slider scaleControl;
     // List for holding data from CSV reader
     private List<Dictionary<string, object>> pointList;
 
@@ -31,12 +32,24 @@ public class LinePlotter : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        scaleControl.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+        DrawGraph(plotScale);
+    }
 
+    public void ValueChangeCheck()
+    {
+        plotScale = scaleControl.value;
+        //Debug.Log(scaleControl.value);
+        DrawGraph(plotScale);
+    }
+
+    private void DrawGraph(float scale)
+    {
         // Set pointlist to results of function Reader with argument inputfile
         pointList = CSVReader.Read(inputfile);
 
         //Log to console
-        Debug.Log(pointList);
+        //Debug.Log(pointList);
 
         // Declare list of strings, fill with keys (column names)
         List<string> columnList = new List<string>(pointList[1].Keys);
@@ -63,6 +76,15 @@ public class LinePlotter : MonoBehaviour
         float zMin = FindMinValue(zName);
 
 
+        var objects = FindObjectsOfType<GameObject>();
+        foreach (GameObject line in objects)
+        {
+            if (line.name == "ben")
+            {
+                GameObject.Destroy(line);
+                Debug.Log(line);
+            }
+        }
         //Loop through Pointlist
         for (var i = 0; i < pointList.Count; i++)
         {
@@ -92,12 +114,13 @@ public class LinePlotter : MonoBehaviour
                 float z1 =
                     (System.Convert.ToSingle(pointList[i + 1][zName]) - zMin)
                     / (zMax - zMin);
-                DrawLine(new Vector3(x, y, z) * plotScale, new Vector3(x1, y1, z1) * plotScale, lineColor);
+                DrawLine(new Vector3(x, y, z) * scale, new Vector3(x1, y1, z1) * scale, lineColor);
             }
         }
-
+        DrawLine(new Vector3(-1, 0, 0), new Vector3(1, 0, 0) * scale, lineColor);
+        DrawLine(new Vector3(0,-1, 0), new Vector3(0, 1, 0) * scale, lineColor);
+        DrawLine(new Vector3(0, 0, -1), new Vector3(0, 0, 1) * scale, lineColor);
     }
-
     private float FindMaxValue(string columnName)
     {
         //set initial value to first value
@@ -132,6 +155,7 @@ public class LinePlotter : MonoBehaviour
     private void DrawLine(Vector3 start, Vector3 end, Color color)
     {
         GameObject myLine = new GameObject();
+        myLine.name = "ben";
         myLine.transform.position = start;
         myLine.AddComponent<LineRenderer>();
         LineRenderer lr = myLine.GetComponent<LineRenderer>();
