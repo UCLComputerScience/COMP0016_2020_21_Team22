@@ -689,11 +689,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3b0cd6edc3c5241bfc0189eed8b478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputfile: linedata
+  inputfile: test
   scaleControl: {fileID: 87695613}
-  columnX: 1
-  columnY: 2
-  columnZ: 3
+  columnX: 0
+  columnY: 1
+  columnZ: 2
   xName: 
   yName: 
   zName: 
@@ -790,7 +790,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &707769282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1281,7 +1281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1280226656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2361,7 +2361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1995420164
 AudioListener:
   m_ObjectHideFlags: 0

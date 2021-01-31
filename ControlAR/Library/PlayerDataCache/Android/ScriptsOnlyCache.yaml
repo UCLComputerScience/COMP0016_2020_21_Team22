@@ -153,6 +153,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12280}
     - Class: 114
+      Script: {instanceID: 12364}
+    - Class: 114
       Script: {instanceID: 12508}
     - Class: 114
       Script: {instanceID: 12774}
@@ -172,8 +174,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13536}
     - Class: 114
       Script: {instanceID: 13570}
-    - Class: 114
-      Script: {instanceID: 21124}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -255,6 +255,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13430}
     - Class: 114
       Script: {instanceID: 13536}
+    - Class: 114
+      Script: {instanceID: 13552}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -287,6 +289,8 @@ ScriptsOnlyBuild:
     - Class: 28
       Script: {instanceID: 0}
     - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
@@ -665,6 +669,12 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: ecfc0cb6e45891871d68c00f91973434
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: dataCameraMove
+  - hash:
+      serializedVersion: 2
       Hash: 290afc8da8e459e0b8dc7444bfaf5e35
     assemblyName: Unity.XR.ARFoundation.dll
     namespaceName: UnityEngine.XR.ARFoundation
@@ -683,7 +693,7 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
-      Hash: 2405c4962b0815da60cab2a20badc659
+      Hash: 432ba4c06d8de1ca0f50defc31858da4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlacingObjects
@@ -1013,10 +1023,16 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: ecfc0cb6e45891871d68c00f91973434
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: dataCameraMove
+    className: BlobModel
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Program
   platform: 13
   scenePathNames:
   - Assets/start.unity

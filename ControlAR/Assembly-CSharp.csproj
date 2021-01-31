@@ -65,11 +65,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ARfilteredplanes.cs" />
+    <Compile Include="Assets\Scripts\BlobModel.cs" />
     <Compile Include="Assets\Scripts\CSVReader.cs" />
     <Compile Include="Assets\Scripts\DataPlotter.cs" />
     <Compile Include="Assets\Scripts\FilteredPlanesCanvas.cs" />
     <Compile Include="Assets\Scripts\LinePlotter.cs" />
+    <Compile Include="Assets\Scripts\ObjImporter.cs" />
     <Compile Include="Assets\Scripts\PlacingObjects.cs" />
+    <Compile Include="Assets\Scripts\Program.cs" />
     <Compile Include="Assets\Scripts\Sceneswitch.cs" />
     <Compile Include="Assets\Scripts\dataCameraMove.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -269,6 +272,15 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>D:/Unity/2019.4.12f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.TypeExtensions">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/System.Reflection.TypeExtensions.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Unity/2019.4.12f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
