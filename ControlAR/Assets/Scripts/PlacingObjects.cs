@@ -29,7 +29,7 @@ public class PlacingObjects : MonoBehaviour
 
     bool TryGetTouchPosition(out Vector2 touchPosition)
     {
-        if(Input.touchCount > 0)
+        if(Input.touchCount > 0 && Input.GetTouch(0).position[0] < 570)
         {
             touchPosition = Input.GetTouch(0).position;
             return true;
@@ -65,10 +65,13 @@ public class PlacingObjects : MonoBehaviour
         {
             return;
         }
+        else
+        {
+            Debug.Log("position is" + Input.GetTouch(0).position);
+        }
         if (_arRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
             var hitPose = hits[0].pose;
-
             if(startPlacing == true)
             {
                 if(spwanedObject == null)

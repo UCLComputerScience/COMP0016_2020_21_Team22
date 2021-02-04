@@ -689,11 +689,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3b0cd6edc3c5241bfc0189eed8b478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputfile: test
+  inputfile: linedata
   scaleControl: {fileID: 87695613}
-  columnX: 0
-  columnY: 1
-  columnZ: 2
+  columnX: 1
+  columnY: 2
+  columnZ: 3
   xName: 
   yName: 
   zName: 

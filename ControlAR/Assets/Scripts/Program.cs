@@ -17,10 +17,17 @@ public class Program : MonoBehaviour
         //GameObject ifieldobj = GameObject.Find("Canvas/param");
         //InputField ifield = ifieldobj.GetComponent<InputField>();
         //ifield.onEndEdit.AddListener(ParameterInput);
-        ParameterInput(connection_String);
-
+        StartCoroutine(ExampleCoroutine());
     }
-
+    IEnumerator ExampleCoroutine()
+    {
+        string connection_String = "DefaultEndpointsProtocol=https;AccountName=mohseenhubblob;AccountKey=SSMMWgXQnBk0oZr7YBbmmC4ZY5YYY/TypNX9CVXiDqFQTEHqSZ9IYl9JPUS+HXbI2y5HBsijkEdrcOTT5B4UrA==;EndpointSuffix=core.windows.net";
+        for (int i = 0; i < 20; i++)
+        {
+            ParameterInput(connection_String);
+            yield return new WaitForSeconds(5);
+        }
+    }
     //User enters connection string and hits Return key.
     public void ParameterInput(string cxnstr)
     {
@@ -42,37 +49,37 @@ public class Program : MonoBehaviour
 
     public async Task downloadDemo(string cxnstr)
     {
-        BlobModel bm = new BlobModel("cat.obj", "iotoutput", cxnstr);
-        if (await bm.exists())
-        {
-            await bm.download("catmodel.obj"); //you MUST await this, otherwise file can't be imported since it may not be downloaded yet
-            Debug.Log("Downloaded.");
+        //BlobModel bm = new BlobModel("cat.obj", "iotoutput", cxnstr);
+        //if (await bm.exists())
+        //{
+        //    await bm.download("catmodel.obj"); //you MUST await this, otherwise file can't be imported since it may not be downloaded yet
+        //    Debug.Log("Downloaded.");
 
-            Mesh meshHold = new Mesh();
-            ObjImporter newMesh = new ObjImporter();
-            meshHold = newMesh.ImportFile("./Assets/Resources/catmodel.obj");//"./Assets/BlobServerModels/catmodel.obj"); VS ./Assets/Scenes/catmodel.obj
-            Debug.Log("Imported");
+        //    Mesh meshHold = new Mesh();
+        //    ObjImporter newMesh = new ObjImporter();
+        //    meshHold = newMesh.ImportFile("./Assets/Resources/catmodel.obj");//"./Assets/BlobServerModels/catmodel.obj"); VS ./Assets/Scenes/catmodel.obj
+        //    Debug.Log("Imported");
 
-            GameObject myCat = new GameObject();
-            MeshRenderer meshRenderer = myCat.AddComponent<MeshRenderer>();
-            MeshFilter filter = myCat.AddComponent<MeshFilter>();
-            filter.mesh = meshHold;
-            //./Assets/Resources/metal01.mat
-            Material catMaterial = Resources.Load("metal01", typeof(Material)) as Material;
-            myCat.GetComponent<MeshRenderer>().material = catMaterial;
+        //    GameObject myCat = new GameObject();
+        //    MeshRenderer meshRenderer = myCat.AddComponent<MeshRenderer>();
+        //    MeshFilter filter = myCat.AddComponent<MeshFilter>();
+        //    filter.mesh = meshHold;
+        //    //./Assets/Resources/metal01.mat
+        //    Material catMaterial = Resources.Load("metal01", typeof(Material)) as Material;
+        //    myCat.GetComponent<MeshRenderer>().material = catMaterial;
 
-            Instantiate(myCat);
-            myCat.transform.position = new Vector3(47, -365, -59);
+        //    Instantiate(myCat);
+        //    myCat.transform.position = new Vector3(47, -365, -59);
 
-            Debug.Log("Done");
-        }
+        //    Debug.Log("Done");
+        //}
 
-        BlobModel bmtwo = new BlobModel("test.csv", "iotoutput", cxnstr);
-        if (await bmtwo.exists())
-        {
-            await bmtwo.download("test.csv"); //you MUST await this, otherwise file can't be imported since it may not be downloaded yet
-            Debug.Log("Downloaded.");
-        }
+            BlobModel bmtwo = new BlobModel("1184899729_ac40afc530464379bdd597f5822cc3b2_1.csv", "iotoutput", cxnstr);
+            if (await bmtwo.exists())
+            {
+                await bmtwo.download("1184899729_ac40afc530464379bdd597f5822cc3b2_1.csv"); //you MUST await this, otherwise file can't be imported since it may not be downloaded yet
+                Debug.Log("Downloaded.");
+            }
     }
 
 
