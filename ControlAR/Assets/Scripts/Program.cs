@@ -12,20 +12,21 @@ public class Program : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string connection_String = "DefaultEndpointsProtocol=https;AccountName=mohseenhubblob;AccountKey=SSMMWgXQnBk0oZr7YBbmmC4ZY5YYY/TypNX9CVXiDqFQTEHqSZ9IYl9JPUS+HXbI2y5HBsijkEdrcOTT5B4UrA==;EndpointSuffix=core.windows.net";
+        //string connection_String = "DefaultEndpointsProtocol=https;AccountName=mohseenhubblob;AccountKey=SSMMWgXQnBk0oZr7YBbmmC4ZY5YYY/TypNX9CVXiDqFQTEHqSZ9IYl9JPUS+HXbI2y5HBsijkEdrcOTT5B4UrA==;EndpointSuffix=core.windows.net";
         //Debug.Log("Script runs when cube is rendered.");
         //GameObject ifieldobj = GameObject.Find("Canvas/param");
         //InputField ifield = ifieldobj.GetComponent<InputField>();
         //ifield.onEndEdit.AddListener(ParameterInput);
         StartCoroutine(ExampleCoroutine());
+        
     }
     IEnumerator ExampleCoroutine()
     {
         string connection_String = "DefaultEndpointsProtocol=https;AccountName=mohseenhubblob;AccountKey=SSMMWgXQnBk0oZr7YBbmmC4ZY5YYY/TypNX9CVXiDqFQTEHqSZ9IYl9JPUS+HXbI2y5HBsijkEdrcOTT5B4UrA==;EndpointSuffix=core.windows.net";
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 50; i++)
         {
             ParameterInput(connection_String);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
         }
     }
     //User enters connection string and hits Return key.
@@ -73,11 +74,15 @@ public class Program : MonoBehaviour
 
         //    Debug.Log("Done");
         //}
-
-            BlobModel bmtwo = new BlobModel("1184899729_ac40afc530464379bdd597f5822cc3b2_1.csv", "iotoutput", cxnstr);
+        Debug.Log("path is " + Application.temporaryCachePath);
+            BlobModel bmtwo = new BlobModel("1184906515_2bf7a63f2ff44de2b45d366dff28dd5a_1.csv", "iotoutput", cxnstr);
             if (await bmtwo.exists())
             {
-                await bmtwo.download("1184899729_ac40afc530464379bdd597f5822cc3b2_1.csv"); //you MUST await this, otherwise file can't be imported since it may not be downloaded yet
+                if(System.IO.File.Exists(Application.temporaryCachePath + "linedata.csv"))
+                {
+                    System.IO.File.Delete(Application.temporaryCachePath + "linedata.csv");
+                }
+                await bmtwo.download("linedata.csv"); //you MUST await this, otherwise file can't be imported since it may not be downloaded yet
                 Debug.Log("Downloaded.");
             }
     }

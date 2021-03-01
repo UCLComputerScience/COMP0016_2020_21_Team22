@@ -13,7 +13,6 @@ public class PlacingObjects : MonoBehaviour
     // static List<GameObject> spwanedObject = new List<GameObject>();
     public GameObject spwanedObject;
     [SerializeField] private Toggle placeObject;
-    private int counter = 0;
     private ARRaycastManager _arRaycastManager;
     private Vector2 touchPosition;
     private bool startPlacing = false;
@@ -47,17 +46,8 @@ public class PlacingObjects : MonoBehaviour
 
     void TaskOnClick()
     {
-        if(startPlacing == false)
-        {
-            startPlacing = true;
-            counter += 1;
-            placeObject.isOn = true;
-        }
-        else
-        {
-            startPlacing = false;
-            placeObject.isOn = false;
-        }
+        startPlacing = !startPlacing;
+        placeObject.isOn = !placeObject.isOn;
     }
     void Update()
     {
@@ -83,6 +73,10 @@ public class PlacingObjects : MonoBehaviour
                     spwanedObject.transform.position = hitPose.position;
                 }
             }
+        }
+        if(_arRaycastManager.Raycast(touchPosition, hits, TrackableType.Face))
+        {
+            Debug.Log("///////////////yes///////////////////////");
         }
     }
 }

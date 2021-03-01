@@ -66,15 +66,19 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ARfilteredplanes.cs" />
     <Compile Include="Assets\Scripts\BlobModel.cs" />
+    <Compile Include="Assets\Scripts\ButtonControl.cs" />
     <Compile Include="Assets\Scripts\CSVReader.cs" />
     <Compile Include="Assets\Scripts\DataPlotter.cs" />
     <Compile Include="Assets\Scripts\FilteredPlanesCanvas.cs" />
+    <Compile Include="Assets\Scripts\IoTControl.cs" />
     <Compile Include="Assets\Scripts\LinePlotter.cs" />
     <Compile Include="Assets\Scripts\ObjImporter.cs" />
     <Compile Include="Assets\Scripts\PlacingObjects.cs" />
     <Compile Include="Assets\Scripts\Program.cs" />
     <Compile Include="Assets\Scripts\Sceneswitch.cs" />
+    <Compile Include="Assets\Scripts\camerajRotate.cs" />
     <Compile Include="Assets\Scripts\dataCameraMove.cs" />
+    <Compile Include="Assets\Scripts\datapath.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -90,6 +94,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Prefabs\lineplotshader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
@@ -272,6 +277,15 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>D:/Unity/2019.4.18f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Amqp">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Microsoft.Azure.Amqp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Devices">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Microsoft.Azure.Devices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Devices.Shared">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Microsoft.Azure.Devices.Shared.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Microsoft.WindowsAzure.Storage.dll</HintPath>

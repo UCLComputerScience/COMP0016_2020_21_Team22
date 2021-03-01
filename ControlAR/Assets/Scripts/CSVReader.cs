@@ -14,9 +14,19 @@ public class CSVReader
 	public static List<Dictionary<string, object>> Read(string file)
 	{
 		var list = new List<Dictionary<string, object>>();
-		TextAsset data = Resources.Load(file) as TextAsset;
-
-		var lines = Regex.Split(data.text, LINE_SPLIT_RE);
+		//TextAsset data = Resources.Load(file) as TextAsset;
+		//to use this change the data ti data.text at Regex.Split
+		String data = "";
+		if (System.IO.File.Exists(Application.temporaryCachePath + "/" + file + ".csv")){
+			//Debug.Log("file exists");
+            data = System.IO.File.ReadAllText(Application.temporaryCachePath + "/" + file + ".csv");
+        }
+  //      else
+  //      {
+		//	Debug.Log("file not exist");
+  //      }
+		//Debug.Log("/////////////////////////////");
+        var lines = Regex.Split(data, LINE_SPLIT_RE);
 
 		if (lines.Length <= 1) return list;
 

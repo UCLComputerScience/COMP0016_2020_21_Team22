@@ -3,10 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO; 
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using Microsoft.WindowsAzure.Storage;
@@ -43,7 +40,9 @@ public class BlobModel : MonoBehaviour
     {
         if (saveAs == null) saveAs = fileName;
 
-        await blob.DownloadToFileAsync(string.Format("./Assets/Resources/{0}", saveAs), FileMode.Create);
+
+        //await blob.DownloadToFileAsync(string.Format("./Assets/Resources/{0}", saveAs), FileMode.Create);
+        await blob.DownloadToFileAsync(string.Format(Application.temporaryCachePath + "/{0}", saveAs), FileMode.Create);
     }
 
     public async Task downloadTo(String directory, String saveAs)
