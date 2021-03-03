@@ -17,9 +17,13 @@ public class camerajRotate : MonoBehaviour
 
     public Button reset;
 
+    public Text focusIndicator;
+    public Button startFocus;
     private Vector3 center = new Vector3(0, 0, 0);
+    private Vector3 ball = new Vector3(0, 0, 0);
     private Vector3 difference = new Vector3(0, 0, 0);
     private float angle;
+    private bool focus = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,36 +35,39 @@ public class camerajRotate : MonoBehaviour
         right.onClick.AddListener(onRightClick);
         forward.onClick.AddListener(onForwardClick);
         back.onClick.AddListener(onBackClick);
-
         reset.onClick.AddListener(onResetClick);
-        
+        startFocus.onClick.AddListener(onFocusClick);
     }
 
-
+    void onFocusClick()
+    {
+        focus = !focus;
+        focusIndicator.text = ("Focus Mode: " + focus);
+    }
     void onUpClick()
     {
-        transform.position = transform.position + new Vector3(0, -1, 0);
+        transform.position = transform.position + transform.up;
     }
     void onDownClick()
     {
-        transform.position = transform.position + new Vector3(0, 1, 0);
+        transform.position = transform.position - transform.up;
     }
     void onLeftClick()
     {
-        transform.position = transform.position + new Vector3(1, 0, 0);
+        transform.position = transform.position - transform.right;
     }
     void onRightClick()
     {
-        transform.position = transform.position + new Vector3(-1, 0, 0);
+        transform.position = transform.position + transform.right;
     }
     void onForwardClick()
     {
-        transform.position = transform.position + new Vector3(0, 0, -1);
-        Debug.Log(transform.position);
+        transform.position = transform.position + transform.forward;
+        //Debug.Log(transform.position);
     }
     void onBackClick()
     {
-        transform.position = transform.position + new Vector3(0, 0, 1);
+        transform.position = transform.position - transform.forward;
     }
 
     void ValueChangeCheck()
@@ -74,6 +81,7 @@ public class camerajRotate : MonoBehaviour
 
         StartCoroutine(smoothRotate(center - difference, new Vector3(0,0,0), 1f));
         StartCoroutine(smoothMove(transform.position, new Vector3(0, 0, -5), 1f));
+        center = new Vector3(0, 0, 0);
         cameraRotation.value = 0;
     }
     IEnumerator smoothMove(Vector3 pos1, Vector3 pos2, float duration)
@@ -99,13 +107,16 @@ public class camerajRotate : MonoBehaviour
     void Update()
     {
         Vector3 newpoint = GameObject.Find("plotter").GetComponent<LinePlotter>().ballPoint;
-        if (center != newpoint)
+        if (center != newpoint && focus == true)
         {
             StopAllCoroutines();
             difference = newpoint - center;
             transform.LookAt(center);
             StartCoroutine(smoothRotate(center, newpoint, 1f));
         }
-        center = newpoint;
+        if(focus == true)
+        {
+            center = newpoint;
+        }
     }
 }

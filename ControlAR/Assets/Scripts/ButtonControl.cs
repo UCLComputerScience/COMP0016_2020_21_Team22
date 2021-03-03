@@ -7,7 +7,7 @@ public class ButtonControl : MonoBehaviour
 {
     public Button showConfiguration;
 
-    public Canvas toShow;
+    public GameObject toShow;
 
     // Start is called before the first frame update
     void Start()

@@ -74,9 +74,6 @@ public class PlacingObjects : MonoBehaviour
                 }
             }
         }
-        if(_arRaycastManager.Raycast(touchPosition, hits, TrackableType.Face))
-        {
-            Debug.Log("///////////////yes///////////////////////");
-        }
+        
     }
 }

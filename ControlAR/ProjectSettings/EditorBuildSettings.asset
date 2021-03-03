@@ -9,11 +9,11 @@ EditorBuildSettings:
     path: Assets/MainAR.unity
     guid: 678b4d2e6d8518446a5afea6b87435b9
   - enabled: 1
-    path: Assets/Data.unity
-    guid: 97cbe8f7b2f2bce4bbbb25247b97daf3
-  - enabled: 1
     path: Assets/Data2.unity
     guid: 3c5e5424699979e4982deed92d168060
+  - enabled: 1
+    path: Assets/DataInAR.unity
+    guid: bfe0dc9b60bf4fa40bccaf6d58a4eeff
   m_configObjects:
     com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: 6adf5112722f7af42aeff9db52196bec,
       type: 2}

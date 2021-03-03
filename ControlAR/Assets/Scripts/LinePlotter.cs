@@ -51,6 +51,7 @@ public class LinePlotter : MonoBehaviour
     public Dropdown yAxis;
     public Dropdown zAxis;
 
+    public GameObject lineHolder;
     // Use this for initialization
     void Start()
     {
@@ -271,7 +272,6 @@ public class LinePlotter : MonoBehaviour
         lr.endWidth = 0.01f;
         lr.SetPosition(0, start);
         lr.SetPosition(1, end);
-        //GameObject.Destroy(myLine, duration);
     }
 
     private float NoDivideZero(float max, float min, int counter, string column)
@@ -295,9 +295,9 @@ public class LinePlotter : MonoBehaviour
             float y = System.Convert.ToSingle(pointList[n][yName]);
             float z = System.Convert.ToSingle(pointList[n][zName]);
             string time = System.Convert.ToString(pointList[n][newName]);
-            dataType1.text = (xName + ": " + x);
-            dataType2.text = (yName + ": " + y);
-            dataType3.text = (zName + ": " + z);
+            dataType1.text = ("X: " + xName + ": " + x);
+            dataType2.text = ("Y: " + yName + ": " + y);
+            dataType3.text = ("Z: " + zName + ": " + z);
             dataTime.text = (newName + ": " + time);
             float xPlot = NoDivideZero(FindMaxValue(xName), FindMinValue(xName), n, xName);
             float yPlot = NoDivideZero(FindMaxValue(yName), FindMinValue(yName), n, yName);

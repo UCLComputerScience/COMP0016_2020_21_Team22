@@ -65,6 +65,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ARfilteredplanes.cs" />
+    <Compile Include="Assets\Scripts\ActionOnMachine.cs" />
+    <Compile Include="Assets\Scripts\AddingMachines.cs" />
     <Compile Include="Assets\Scripts\BlobModel.cs" />
     <Compile Include="Assets\Scripts\ButtonControl.cs" />
     <Compile Include="Assets\Scripts\CSVReader.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Assets\Scripts\camerajRotate.cs" />
     <Compile Include="Assets\Scripts\dataCameraMove.cs" />
     <Compile Include="Assets\Scripts\datapath.cs" />
+    <Compile Include="Assets\Scripts\startState.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
