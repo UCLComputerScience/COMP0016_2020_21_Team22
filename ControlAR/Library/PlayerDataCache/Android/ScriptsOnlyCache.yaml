@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - ARfilteredplanes
     - AddingMachines
     - ButtonControl
+    - ChooseMachine
     - FilteredPlanesCanvas
     - IoTControl
     - LinePlotter
@@ -100,27 +101,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12030}
     - Class: 114
-      Script: {instanceID: 12280}
+      Script: {instanceID: 12282}
     - Class: 114
-      Script: {instanceID: 12308}
+      Script: {instanceID: 12310}
     - Class: 114
-      Script: {instanceID: 12384}
+      Script: {instanceID: 12386}
     - Class: 114
-      Script: {instanceID: 12538}
+      Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12586}
+      Script: {instanceID: 12590}
     - Class: 114
-      Script: {instanceID: 12942}
+      Script: {instanceID: 12788}
     - Class: 114
-      Script: {instanceID: 13142}
+      Script: {instanceID: 12948}
     - Class: 114
-      Script: {instanceID: 13572}
+      Script: {instanceID: 13148}
     - Class: 114
-      Script: {instanceID: 13588}
+      Script: {instanceID: 13578}
     - Class: 114
-      Script: {instanceID: 13604}
+      Script: {instanceID: 13594}
     - Class: 114
-      Script: {instanceID: 13624}
+      Script: {instanceID: 13610}
+    - Class: 114
+      Script: {instanceID: 13630}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -179,35 +182,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12030}
     - Class: 114
-      Script: {instanceID: 12280}
+      Script: {instanceID: 12282}
     - Class: 114
-      Script: {instanceID: 12308}
+      Script: {instanceID: 12310}
     - Class: 114
-      Script: {instanceID: 12538}
+      Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12586}
+      Script: {instanceID: 12590}
     - Class: 114
-      Script: {instanceID: 12808}
+      Script: {instanceID: 12812}
     - Class: 114
-      Script: {instanceID: 12942}
+      Script: {instanceID: 12948}
     - Class: 114
-      Script: {instanceID: 13018}
+      Script: {instanceID: 13024}
     - Class: 114
-      Script: {instanceID: 13142}
+      Script: {instanceID: 13148}
     - Class: 114
-      Script: {instanceID: 13166}
+      Script: {instanceID: 13172}
     - Class: 114
-      Script: {instanceID: 13340}
+      Script: {instanceID: 13346}
     - Class: 114
-      Script: {instanceID: 13480}
+      Script: {instanceID: 13486}
     - Class: 114
-      Script: {instanceID: 13572}
+      Script: {instanceID: 13578}
     - Class: 114
-      Script: {instanceID: 13588}
+      Script: {instanceID: 13594}
     - Class: 114
-      Script: {instanceID: 13604}
+      Script: {instanceID: 13610}
     - Class: 114
-      Script: {instanceID: 13624}
+      Script: {instanceID: 13630}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -278,43 +281,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12242}
     - Class: 114
-      Script: {instanceID: 12522}
+      Script: {instanceID: 12524}
     - Class: 114
-      Script: {instanceID: 12538}
+      Script: {instanceID: 12540}
     - Class: 114
-      Script: {instanceID: 12586}
+      Script: {instanceID: 12590}
     - Class: 114
-      Script: {instanceID: 12782}
+      Script: {instanceID: 12786}
     - Class: 114
-      Script: {instanceID: 12784}
+      Script: {instanceID: 12788}
     - Class: 114
-      Script: {instanceID: 12808}
+      Script: {instanceID: 12812}
     - Class: 114
-      Script: {instanceID: 12822}
+      Script: {instanceID: 12826}
     - Class: 114
-      Script: {instanceID: 12840}
+      Script: {instanceID: 12844}
     - Class: 114
-      Script: {instanceID: 12942}
+      Script: {instanceID: 12848}
     - Class: 114
-      Script: {instanceID: 13018}
+      Script: {instanceID: 12948}
     - Class: 114
-      Script: {instanceID: 13072}
+      Script: {instanceID: 13024}
     - Class: 114
-      Script: {instanceID: 13142}
+      Script: {instanceID: 13078}
     - Class: 114
-      Script: {instanceID: 13166}
+      Script: {instanceID: 13148}
     - Class: 114
-      Script: {instanceID: 13324}
+      Script: {instanceID: 13172}
     - Class: 114
-      Script: {instanceID: 13340}
+      Script: {instanceID: 13330}
     - Class: 114
-      Script: {instanceID: 13480}
+      Script: {instanceID: 13346}
     - Class: 114
-      Script: {instanceID: 13588}
+      Script: {instanceID: 13486}
     - Class: 114
-      Script: {instanceID: 13604}
+      Script: {instanceID: 13594}
     - Class: 114
-      Script: {instanceID: 104692}
+      Script: {instanceID: 13610}
+    - Class: 114
+      Script: {instanceID: 15960}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -624,13 +629,19 @@ ScriptsOnlyBuild:
     className: ARPlaneMeshVisualizer
   - hash:
       serializedVersion: 2
+      Hash: 629e66a3c761f3cd957e59844fe33a57
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ActionOnMachine
+  - hash:
+      serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: ScrollRect
   - hash:
       serializedVersion: 2
-      Hash: 13d5b4b9514388bf44886a33d0235ef6
+      Hash: e4e6a637354265675f98cb2dd61e8941
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LinePlotter
@@ -642,7 +653,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 9a45dc6f67e1d1eec0d5f3ccc1f2a388
+      Hash: e2caf2246ce0549a54a169fb072056f3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: camerajRotate
@@ -694,6 +705,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 535705bb5ca1fcb6aa5ba4528b927378
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: startState
   - hash:
       serializedVersion: 2
       Hash: a9cc6ca8a076f545007b805e74b989be
@@ -772,6 +789,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: f80183db57a7488c324f0125172973f4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AddingMachines
   - hash:
       serializedVersion: 2
       Hash: 18c222bef9ae745ce69ddde9b74337ca
@@ -1026,22 +1049,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 535705bb5ca1fcb6aa5ba4528b927378
+      Hash: 9d6a166e83846d893b8f97afe34c497d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: startState
-  - hash:
-      serializedVersion: 2
-      Hash: 629e66a3c761f3cd957e59844fe33a57
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ActionOnMachine
-  - hash:
-      serializedVersion: 2
-      Hash: f80183db57a7488c324f0125172973f4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: AddingMachines
+    className: ChooseMachine
   platform: 13
   scenePathNames:
   - Assets/MainAR.unity

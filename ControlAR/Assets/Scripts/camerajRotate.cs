@@ -7,6 +7,7 @@ public class camerajRotate : MonoBehaviour
 {
 
     public Slider cameraRotation;
+    public Slider cameraRotationUp;
 
     public Button up;
     public Button down;
@@ -23,11 +24,13 @@ public class camerajRotate : MonoBehaviour
     private Vector3 ball = new Vector3(0, 0, 0);
     private Vector3 difference = new Vector3(0, 0, 0);
     private float angle;
+    private float angleUp;
     private bool focus = false;
     // Start is called before the first frame update
     void Start()
     {
         cameraRotation.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+        cameraRotationUp.onValueChanged.AddListener(delegate { UpValueChangeCheck(); });
 
         up.onClick.AddListener(onUpClick);
         down.onClick.AddListener(onDownClick);
@@ -69,10 +72,14 @@ public class camerajRotate : MonoBehaviour
     {
         transform.position = transform.position - transform.forward;
     }
-
+    void UpValueChangeCheck()
+    {
+        transform.RotateAround(center, transform.right, cameraRotationUp.value - angleUp);
+        angleUp = cameraRotationUp.value;
+    }
     void ValueChangeCheck()
     {
-        transform.RotateAround(center, Vector3.up, cameraRotation.value - angle);
+        transform.RotateAround(center, transform.up, cameraRotation.value - angle);
         angle = cameraRotation.value;
     }
     void onResetClick()
@@ -83,6 +90,7 @@ public class camerajRotate : MonoBehaviour
         StartCoroutine(smoothMove(transform.position, new Vector3(0, 0, -5), 1f));
         center = new Vector3(0, 0, 0);
         cameraRotation.value = 0;
+        cameraRotationUp.value = 0;
     }
     IEnumerator smoothMove(Vector3 pos1, Vector3 pos2, float duration)
     {

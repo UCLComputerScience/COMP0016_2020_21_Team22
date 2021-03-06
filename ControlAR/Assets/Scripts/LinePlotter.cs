@@ -29,7 +29,6 @@ public class LinePlotter : MonoBehaviour
     public string newName;
 
     public Color lineColor;
-    public Material lineMat;
 
     public float plotScale = 1;
     private int frameCounter = 0;
@@ -51,11 +50,35 @@ public class LinePlotter : MonoBehaviour
     public Dropdown yAxis;
     public Dropdown zAxis;
 
-    public GameObject lineHolder;
+    public Button thresholdButton;
+    public Canvas thresholdCanvas;
+    public InputField X;
+    public InputField Y;
+    public InputField Z;
+
+    private float xMax, xMin, yMax, yMin, zMax, zMin;
+    private float xThresh, yThresh, zThresh;
+    
+    Camera CameraToLookAt;
+    GameObject xAxesNameObject;
+    TextMesh xAxesName;
     // Use this for initialization
     void Start()
     {
+        xAxesNameObject = new GameObject();
+        xAxesName = xAxesNameObject.AddComponent<TextMesh>();
+        var meshRenderer = xAxesNameObject.AddComponent<MeshRenderer>();
+        xAxesName.transform.position = new Vector3(100, 100, 100);
+
+        CameraToLookAt = Camera.main;
+        xThresh = xMax;
+        yThresh = yMax;
+        zThresh = zMax;
         scaleControl.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+        thresholdButton.onClick.AddListener(onThresholdClick);
+        X.onEndEdit.AddListener(delegate { onEnd(); }) ;
+        Y.onEndEdit.AddListener(delegate { onEnd(); });
+        Z.onEndEdit.AddListener(delegate { onEnd(); });
         lastData.onClick.AddListener(onLastClick);
         nextData.onClick.AddListener(onNexttClick);
         DrawGraph(plotScale, number_of_data);
@@ -74,7 +97,68 @@ public class LinePlotter : MonoBehaviour
         yAxis.onValueChanged.AddListener(delegate { OnYChanged(); });
         zAxis.onValueChanged.AddListener(delegate { OnZChanged(); });
     }
-
+    void onThresholdClick()
+    {
+        bool b = thresholdCanvas.gameObject.activeSelf;
+        thresholdCanvas.gameObject.SetActive(!b);
+    }
+    void onEnd()
+    {
+        try
+        {
+            xThresh = float.Parse(X.text);
+        }
+        catch (Exception e)
+        {
+            //Debug.LogError(e);
+            showMessage("Invalid X threshold");
+        }
+        try
+        {
+            yThresh = float.Parse(Y.text);
+        }
+        catch (Exception e)
+        {
+            //Debug.LogError(e);
+            showMessage("Invalid Y threshold");
+        }
+        try
+        {
+            zThresh = float.Parse(Z.text);
+        }
+        catch (Exception e)
+        {
+            //Debug.LogError(e);
+            showMessage("Invalid Z threshold");
+        }
+        ThresholdUpdate();
+    }
+    private void ThresholdUpdate()
+    {
+        //draw the thresholdsn (limit to decimal numbers for inputfield on unity editor)
+        cleanPrevious("not ben");
+        xMax = getlarger(xMax, xThresh);
+        xMin = getsmaller(xMin, xThresh);
+        yMax = getlarger(yMax, yThresh);
+        yMin = getsmaller(yMin, yThresh);
+        zMax = getlarger(zMax, zThresh);
+        zMin = getsmaller(zMin, zThresh);
+        float xThresOnPlot = NoDivideZero(xMax, xMin, xThresh);
+        float yThresOnPlot = NoDivideZero(yMax, yMin, yThresh);
+        float zThresOnPlot = NoDivideZero(zMax, zMin, zThresh);
+        DrawLine(new Vector3(xThresOnPlot * plotScale, -1, 0), new Vector3(xThresOnPlot, 1, 0) * plotScale, new Color(xThresOnPlot, -1, 0), new Color(xThresOnPlot, 1, 0), "not ben");
+        DrawLine(new Vector3(-1, yThresOnPlot * plotScale, 0), new Vector3(1, yThresOnPlot, 0) * plotScale, new Color(-1, yThresOnPlot, 0), new Color(1, yThresOnPlot, 0), "not ben");
+        DrawLine(new Vector3(0, 0, zThresOnPlot * plotScale), new Vector3(0, 1, zThresOnPlot) * plotScale, new Color(0, 0, zThresOnPlot), new Color(0, 1, zThresOnPlot), "not ben");
+    }
+    private void showMessage(string message)
+    {
+        GameObject messageObject = new GameObject();
+        messageObject.transform.SetParent(thresholdCanvas.transform);
+        Text messageText = messageObject.AddComponent<Text>();
+        messageText.fontSize = 20;
+        messageText.text = message;
+        messageText.transform.position = new Vector3(360, 1200, 0);
+    }
     void OnXChanged()
     {
         columnX = xAxis.value;
@@ -110,17 +194,7 @@ public class LinePlotter : MonoBehaviour
         }
         displayValue(indexCounter);
     }
-    //IEnumerator ExampleCoroutine()
-    //{
-    //    plotScale = scaleControl.value;
-    //    for (int i = 0; i < 50; i++)
-    //    {
-    //        //AssetDatabase.Refresh();
-    //        //Resources.Load("1184899729_8e5db2aefea84a28a1437ec1088bbd0b_1.csv");
-    //        DrawGraph(plotScale, number_of_data);
-    //        yield return new WaitForSeconds(3);
-    //    }
-    //}
+
     private void Update()
     {
         frameCounter = frameCounter + 1;
@@ -132,12 +206,17 @@ public class LinePlotter : MonoBehaviour
             frameCounter = 0;
         }
     }
-
+    void LateUpdate()
+    {
+        xAxesName.transform.LookAt(CameraToLookAt.transform);
+        xAxesName.transform.rotation = Quaternion.LookRotation(CameraToLookAt.transform.forward);
+    }
     public void ValueChangeCheck()
     {
         plotScale = scaleControl.value;
         //Debug.Log(scaleControl.value);
         DrawGraph(plotScale, number_of_data);
+        ThresholdUpdate();
     }
 
     private void DrawGraph(float scale, int dataNum)
@@ -174,29 +253,26 @@ public class LinePlotter : MonoBehaviour
         zName = columnList[columnZ];
         newName = columnList[newcolumn];
 
+        
         //Debug.Log("x: " + xName + " y: " + yName + " z: " + zName);
         // Get maxes of each axis
-        float xMax = FindMaxValue(xName);
-        float yMax = FindMaxValue(yName);
-        float zMax = FindMaxValue(zName);
+        xMax = FindMaxValue(xName);
+        yMax = FindMaxValue(yName);
+        zMax = FindMaxValue(zName);
 
         // Get minimums of each axis
-        float xMin = FindMinValue(xName);
-        float yMin = FindMinValue(yName);
-        float zMin = FindMinValue(zName);
+        xMin = FindMinValue(xName);
+        yMin = FindMinValue(yName);
+        zMin = FindMinValue(zName);
 
         centerPoint = new Vector3(((xMax + xMin) / 2) / (xMax - xMin), ((yMax + yMin) / 2) / (yMax - yMin), ((zMax + zMin) / 2) / (zMax - zMin)) * scale;
 
-        var objects = FindObjectsOfType<GameObject>();
-        foreach (GameObject line in objects)
-        {
-            if (line.name == "ben")
-            {
-                GameObject.Destroy(line);
-                //Debug.Log(line);
-            }
-        }
+        cleanPrevious("ben");
 
+        //draw the axes
+        DrawLine(new Vector3(-1, 0, 0), new Vector3(1, 0, 0) * scale, Color.red, Color.red, "ben");
+        DrawLine(new Vector3(0, -1, 0), new Vector3(0, 1, 0) * scale, Color.blue, Color.blue, "ben");
+        DrawLine(new Vector3(0, 0, -1), new Vector3(0, 0, 1) * scale, Color.green, Color.green, "ben");
         //Loop through Pointlist
         for (var i = 0; i < pointList.Count; i++)
         {
@@ -219,13 +295,36 @@ public class LinePlotter : MonoBehaviour
                 //float x1 = System.Convert.ToSingle(pointList[i+1][xName]);
                 //float y1 = System.Convert.ToSingle(pointList[i+1][yName]);
                 //float z1 = System.Convert.ToSingle(pointList[i+1][zName]);
-                DrawLine(new Vector3(x, y, z) * scale, new Vector3(x1, y1, z1) * scale, lineColor);
+                DrawLine(new Vector3(x, y, z) * scale, new Vector3(x1, y1, z1) * scale, new Color(0, y, 0), new Color(0, y1, 0), "ben");
             }
         }
-        DrawLine(new Vector3(-1, 0, 0), new Vector3(1, 0, 0) * scale, lineColor);
-        DrawLine(new Vector3(0, -1, 0), new Vector3(0, 1, 0) * scale, lineColor);
-        DrawLine(new Vector3(0, 0, -1), new Vector3(0, 0, 1) * scale, lineColor);
         displayValue(indexCounter);
+    }
+
+    private void nameAxes()
+    {
+        GameObject xAxesNameObject = new GameObject();
+        TextMesh xAxesName = xAxesNameObject.AddComponent<TextMesh>();
+        var meshRenderer = xAxesNameObject.AddComponent<MeshRenderer>();
+        xAxesName.fontSize = 30;
+        xAxesName.text = "X";
+
+    }
+    private float getsmaller(float a, float b)
+    {
+        if (a > b)
+        {
+            return b;
+        }
+        return a;
+    }
+    private float getlarger(float a, float b)
+    {
+        if (a > b)
+        {
+            return a;
+        }
+        return b;
     }
     private float FindMaxValue(string columnName)
     {
@@ -258,16 +357,16 @@ public class LinePlotter : MonoBehaviour
         return minValue;
     }
 
-    private void DrawLine(Vector3 start, Vector3 end, Color color)
+    private void DrawLine(Vector3 start, Vector3 end, Color startcolor, Color endColor, string name)
     {
         GameObject myLine = new GameObject();
-        myLine.name = "ben";
+        myLine.name = name;
         myLine.transform.position = start;
         myLine.AddComponent<LineRenderer>();
         LineRenderer lr = myLine.GetComponent<LineRenderer>();
-        lr.material.color = color;
-        //lr.startColor = color;
-        //lr.endColor = color;
+        lr.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+        lr.startColor = startcolor;
+        lr.endColor = endColor;
         lr.startWidth = 0.01f;
         lr.endWidth = 0.01f;
         lr.SetPosition(0, start);
@@ -286,6 +385,28 @@ public class LinePlotter : MonoBehaviour
         return value;
     }
 
+    private float NoDivideZero(float max, float min, float number)
+    {
+        float value = 0;
+        if (max != min)
+        {
+            value =
+                (number - min) / (max - min);
+        }
+        return value;
+    }
+    private void cleanPrevious(string name)
+    {
+        var objects = FindObjectsOfType<GameObject>();
+        foreach (GameObject line in objects)
+        {
+            if (line.name == name)
+            {
+                GameObject.Destroy(line);
+                //Debug.Log(line);
+            }
+        }
+    }
     private void displayValue(int n)
     {
         //Debug.Log("n is: " + n);
@@ -299,9 +420,9 @@ public class LinePlotter : MonoBehaviour
             dataType2.text = ("Y: " + yName + ": " + y);
             dataType3.text = ("Z: " + zName + ": " + z);
             dataTime.text = (newName + ": " + time);
-            float xPlot = NoDivideZero(FindMaxValue(xName), FindMinValue(xName), n, xName);
-            float yPlot = NoDivideZero(FindMaxValue(yName), FindMinValue(yName), n, yName);
-            float zPlot = NoDivideZero(FindMaxValue(zName), FindMinValue(zName), n, zName);
+            float xPlot = NoDivideZero(xMax, xMin, n, xName);
+            float yPlot = NoDivideZero(yMax, yMin, n, yName);
+            float zPlot = NoDivideZero(zMax, zMin, n, zName);
             ballPoint = new Vector3(xPlot, yPlot, zPlot) * plotScale;
             //Debug.Log("printing value");
             var objects = FindObjectsOfType<GameObject>();
@@ -318,6 +439,8 @@ public class LinePlotter : MonoBehaviour
                     PointPrefab,
                     ballPoint,
                     Quaternion.identity);
+            dataPoint.GetComponent<Renderer>().material.color =
+                new Color(xPlot, yPlot, zPlot);
             dataPoint.name = "alice";
         }
     }

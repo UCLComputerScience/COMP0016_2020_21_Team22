@@ -27,7 +27,7 @@ public class AddingMachines : MonoBehaviour
         NotifyMessage.text = "";
         machineNameInput.text = "";
     }
-void onDeleteClick()
+    void onDeleteClick()
     {
         string machineName = machineNameInput.text;
         if (!System.IO.Directory.Exists(Application.persistentDataPath + "/{0}" + machineName))

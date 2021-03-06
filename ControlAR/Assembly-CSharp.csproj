@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\BlobModel.cs" />
     <Compile Include="Assets\Scripts\ButtonControl.cs" />
     <Compile Include="Assets\Scripts\CSVReader.cs" />
+    <Compile Include="Assets\Scripts\ChooseMachine.cs" />
     <Compile Include="Assets\Scripts\DataPlotter.cs" />
     <Compile Include="Assets\Scripts\FilteredPlanesCanvas.cs" />
     <Compile Include="Assets\Scripts\IoTControl.cs" />
