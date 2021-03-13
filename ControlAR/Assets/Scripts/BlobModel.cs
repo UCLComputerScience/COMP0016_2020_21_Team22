@@ -21,7 +21,7 @@ public class BlobModel : MonoBehaviour
         cont = container;
         cxnstr = connection;
 
-        Debug.Log("Searching model using " + cxnstr);
+        //Debug.Log("Searching model using " + cxnstr);
 
         CloudStorageAccount act = CloudStorageAccount.Parse(cxnstr); 
         CloudBlobClient client = act.CreateCloudBlobClient();

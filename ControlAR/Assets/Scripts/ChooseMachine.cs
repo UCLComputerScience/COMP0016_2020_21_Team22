@@ -23,6 +23,7 @@ public class ChooseMachine : MonoBehaviour
         int counter = 0;
         foreach (string machine in allMachines)
         {
+            string machineName = getDifferenceAtEnd(machine, Application.persistentDataPath+"/{0}");
             int column = counter % 2 + 1;
             int row = counter / 2 + 1;
             GameObject machineButtonsHolder = Instantiate(buttonHolder, new Vector3(column * 300 - 90 , 1440 - row * 200, 0), Quaternion.identity);
@@ -31,8 +32,8 @@ public class ChooseMachine : MonoBehaviour
             Button machineButtons = machineButtonsHolder.GetComponent<Button>();
             if (machineButtons != null)
             {
-                machineButtons.transform.name = machine;
-                machineButtons.onClick.AddListener(onMachineSelected);
+                machineButtons.transform.name = machineName;
+                machineButtons.onClick.AddListener(delegate { onMachineSelected(machineName); });
             }
             else
             {
@@ -40,11 +41,8 @@ public class ChooseMachine : MonoBehaviour
             }
             Text MachineName = machineButtons.GetComponentInChildren<Text>();
             if (MachineName != null)
-            { 
-                MachineName.text = machine;
-            }
-            else
             {
+                MachineName.text = machineName;
                 Debug.Log("AHOH");
             }
 
@@ -53,10 +51,16 @@ public class ChooseMachine : MonoBehaviour
         }
     }
 
-    void onMachineSelected()
+    private string getDifferenceAtEnd(string a, string b)
+    {
+        string c;
+        c = a.Substring(b.Length);
+        return c;
+    }
+    void onMachineSelected(string machineName)
     {
         GameObject.Destroy(GameObject.Find("machine selection page"));
-
+        
     }
     // Update is called once per frame
     void Update()

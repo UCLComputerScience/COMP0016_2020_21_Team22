@@ -16,7 +16,6 @@ public class IoTControl : MonoBehaviour
         // az iot hub show-connection-string --hub-name {your iot hub name} --policy-name service
     private static string s_connectionString = "HostName=MohseenHub.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=lXC2t+EC5ZFHK+4ZouNwamc93gcZwQ5UsxLBXOFzZKI=";
     
-    Material SphereMaterial;
     
     // Start is called before the first frame update
     void Start()
@@ -24,17 +23,8 @@ public class IoTControl : MonoBehaviour
         lightTrigger.onClick.AddListener(onTriggerClick);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void onTriggerClick(){
         IoTInvoke();
-        //SphereMaterial = Resources.Load<Material>("GreenMat");
-        //MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-        //meshRenderer.material = SphereMaterial;
     }
 
     private static async Task IoTInvoke()

@@ -79,9 +79,12 @@
     <Compile Include="Assets\Scripts\PlacingObjects.cs" />
     <Compile Include="Assets\Scripts\Program.cs" />
     <Compile Include="Assets\Scripts\Sceneswitch.cs" />
+    <Compile Include="Assets\Scripts\SelectMachineForData.cs" />
     <Compile Include="Assets\Scripts\camerajRotate.cs" />
     <Compile Include="Assets\Scripts\dataCameraMove.cs" />
     <Compile Include="Assets\Scripts\datapath.cs" />
+    <Compile Include="Assets\Scripts\goBackByGesture.cs" />
+    <Compile Include="Assets\Scripts\readTextLog.cs" />
     <Compile Include="Assets\Scripts\startState.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -282,6 +285,15 @@
     <Reference Include="UnityEditor">
       <HintPath>D:/Unity/2019.4.18f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Azure.Core">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Blobs">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Azure.Storage.Blobs.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Storage.Common">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Azure.Storage.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Amqp">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Microsoft.Azure.Amqp.dll</HintPath>
     </Reference>
@@ -291,14 +303,35 @@
     <Reference Include="Microsoft.Azure.Devices.Shared">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Microsoft.Azure.Devices.Shared.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Storage">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics.Vectors">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Reflection.TypeExtensions">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/System.Reflection.TypeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Assets/Plugins/System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>D:/Unity/2019.4.18f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -710,6 +743,9 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

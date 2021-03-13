@@ -1,21 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class camerajRotate : MonoBehaviour
 {
-
-    public Slider cameraRotation;
-    public Slider cameraRotationUp;
-
-    public Button up;
-    public Button down;
-    public Button left;
-    public Button right;
-    public Button forward;
-    public Button back;
-
     public Button reset;
 
     public Text focusIndicator;
@@ -26,18 +16,11 @@ public class camerajRotate : MonoBehaviour
     private float angle;
     private float angleUp;
     private bool focus = false;
+
+    Vector3 touchAngle = new Vector3(0, 0, 0);
     // Start is called before the first frame update
     void Start()
     {
-        cameraRotation.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
-        cameraRotationUp.onValueChanged.AddListener(delegate { UpValueChangeCheck(); });
-
-        up.onClick.AddListener(onUpClick);
-        down.onClick.AddListener(onDownClick);
-        left.onClick.AddListener(onLeftClick);
-        right.onClick.AddListener(onRightClick);
-        forward.onClick.AddListener(onForwardClick);
-        back.onClick.AddListener(onBackClick);
         reset.onClick.AddListener(onResetClick);
         startFocus.onClick.AddListener(onFocusClick);
     }
@@ -47,41 +30,6 @@ public class camerajRotate : MonoBehaviour
         focus = !focus;
         focusIndicator.text = ("Focus Mode: " + focus);
     }
-    void onUpClick()
-    {
-        transform.position = transform.position + transform.up;
-    }
-    void onDownClick()
-    {
-        transform.position = transform.position - transform.up;
-    }
-    void onLeftClick()
-    {
-        transform.position = transform.position - transform.right;
-    }
-    void onRightClick()
-    {
-        transform.position = transform.position + transform.right;
-    }
-    void onForwardClick()
-    {
-        transform.position = transform.position + transform.forward;
-        //Debug.Log(transform.position);
-    }
-    void onBackClick()
-    {
-        transform.position = transform.position - transform.forward;
-    }
-    void UpValueChangeCheck()
-    {
-        transform.RotateAround(center, transform.right, cameraRotationUp.value - angleUp);
-        angleUp = cameraRotationUp.value;
-    }
-    void ValueChangeCheck()
-    {
-        transform.RotateAround(center, transform.up, cameraRotation.value - angle);
-        angle = cameraRotation.value;
-    }
     void onResetClick()
     {
         //StartCoroutine(smoothRotate(center - difference, difference, 1f));
@@ -89,8 +37,7 @@ public class camerajRotate : MonoBehaviour
         StartCoroutine(smoothRotate(center - difference, new Vector3(0,0,0), 1f));
         StartCoroutine(smoothMove(transform.position, new Vector3(0, 0, -5), 1f));
         center = new Vector3(0, 0, 0);
-        cameraRotation.value = 0;
-        cameraRotationUp.value = 0;
+        transform.position = new Vector3(0, 0, -5);
     }
     IEnumerator smoothMove(Vector3 pos1, Vector3 pos2, float duration)
     {
@@ -112,9 +59,12 @@ public class camerajRotate : MonoBehaviour
         transform.LookAt(end);
     }
     // Update is called once per frame
+    float distance = 0;
+    Vector2 middlePoint = new Vector2(0, 0);
     void Update()
     {
         Vector3 newpoint = GameObject.Find("plotter").GetComponent<LinePlotter>().ballPoint;
+        float scale = GameObject.Find("plotter").GetComponent<LinePlotter>().plotScale;
         if (center != newpoint && focus == true)
         {
             StopAllCoroutines();
@@ -125,6 +75,51 @@ public class camerajRotate : MonoBehaviour
         if(focus == true)
         {
             center = newpoint;
+        }
+        if(Input.touchCount >= 2)
+        {
+            Vector2 touch0, touch1;
+            float newDistance;
+            touch0 = Input.GetTouch(0).position;
+            touch1 = Input.GetTouch(1).position;
+            newDistance = Vector2.Distance(touch0, touch1) / 400;
+            Vector2 newMiddlePoint = (touch0 + touch1) / 2;
+            if((Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(1).phase == TouchPhase.Moved) && Mathf.Abs(newDistance - distance) < 0.05 && Vector2.Distance(newMiddlePoint,middlePoint) > 10)
+            {
+                transform.position = transform.position - transform.right * ((newMiddlePoint.x - middlePoint.x)/400) * Vector3.Distance(transform.position, center);
+                transform.position = transform.position - transform.up * ((newMiddlePoint.y - middlePoint.y)/ 400) * Vector3.Distance(transform.position, center);
+            }
+            if((Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(1).phase == TouchPhase.Moved) && Mathf.Abs(newDistance - distance) >= 0.05)
+            {
+                Vector3 movement = transform.forward*(newDistance - distance) * Vector3.Distance(transform.position, center) / 10;
+                if(Vector3.SqrMagnitude(movement) < 1 && Vector3.Distance((transform.position + movement), center) > scale/10)
+                {
+                    transform.position += movement;
+                }
+            }
+            else
+            {
+                distance = newDistance;
+                middlePoint = newMiddlePoint;
+            }
+        }
+        else if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(0).phase == TouchPhase.Began))
+        {
+            if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+                if (Input.GetTouch(0).phase != TouchPhase.Began)
+                {
+                    Vector2 touchRotatePosition = Input.GetTouch(0).position;
+                    Vector3 newTouchAngle = new Vector3(touchRotatePosition.x, touchRotatePosition.y, 0); 
+                    transform.RotateAround(center, transform.right, ( touchAngle.y - newTouchAngle.y) / 2);
+                    transform.RotateAround(center, transform.up, ( newTouchAngle.x - touchAngle.x) / 2);
+                    touchAngle = newTouchAngle;
+                }
+                else
+                {
+                    touchAngle = Input.GetTouch(0).position;
+                }
+            }
         }
     }
 }

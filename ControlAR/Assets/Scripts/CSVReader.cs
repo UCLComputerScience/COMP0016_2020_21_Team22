@@ -1,4 +1,5 @@
 ﻿//code by tikonen
+//edited
 using UnityEngine;
 using System;
 using System.Collections;
@@ -18,14 +19,20 @@ public class CSVReader
 		//to use this change the data ti data.text at Regex.Split
 		String data = "";
 		if (System.IO.File.Exists(Application.temporaryCachePath + "/" + file + ".csv")){
-			//Debug.Log("file exists");
-            data = System.IO.File.ReadAllText(Application.temporaryCachePath + "/" + file + ".csv");
+            //Debug.Log("file exists");
+            try
+            {
+				data = System.IO.File.ReadAllText(Application.temporaryCachePath + "/" + file + ".csv");
+			}catch(Exception e)
+            {
+				return null;
+            }
         }
-  //      else
-  //      {
-		//	Debug.Log("file not exist");
-  //      }
-		//Debug.Log("/////////////////////////////");
+        else
+        {
+            Debug.Log("file not exist");
+			return null;
+        }
         var lines = Regex.Split(data, LINE_SPLIT_RE);
 
 		if (lines.Length <= 1) return list;

@@ -59,18 +59,9 @@ public class LinePlotter : MonoBehaviour
     private float xMax, xMin, yMax, yMin, zMax, zMin;
     private float xThresh, yThresh, zThresh;
     
-    Camera CameraToLookAt;
-    GameObject xAxesNameObject;
-    TextMesh xAxesName;
     // Use this for initialization
     void Start()
     {
-        xAxesNameObject = new GameObject();
-        xAxesName = xAxesNameObject.AddComponent<TextMesh>();
-        var meshRenderer = xAxesNameObject.AddComponent<MeshRenderer>();
-        xAxesName.transform.position = new Vector3(100, 100, 100);
-
-        CameraToLookAt = Camera.main;
         xThresh = xMax;
         yThresh = yMax;
         zThresh = zMax;
@@ -96,6 +87,10 @@ public class LinePlotter : MonoBehaviour
         xAxis.onValueChanged.AddListener(delegate { OnXChanged(); });
         yAxis.onValueChanged.AddListener(delegate { OnYChanged(); });
         zAxis.onValueChanged.AddListener(delegate { OnZChanged(); });
+
+        plotScale = scaleControl.value;
+        DrawGraph(plotScale, number_of_data);
+
     }
     void onThresholdClick()
     {
@@ -197,19 +192,13 @@ public class LinePlotter : MonoBehaviour
 
     private void Update()
     {
-        frameCounter = frameCounter + 1;
-        if (frameCounter % 120 == 0)
+        frameCounter += 1;
+        if (frameCounter > 200)
         {
-            //Debug.Log("/////////////frame update///////////////////");
             plotScale = scaleControl.value;
             DrawGraph(plotScale, number_of_data);
             frameCounter = 0;
         }
-    }
-    void LateUpdate()
-    {
-        xAxesName.transform.LookAt(CameraToLookAt.transform);
-        xAxesName.transform.rotation = Quaternion.LookRotation(CameraToLookAt.transform.forward);
     }
     public void ValueChangeCheck()
     {
@@ -225,6 +214,10 @@ public class LinePlotter : MonoBehaviour
         // Set pointlist to results of function Reader with argument inputfile
         //Debug.Log(transform.position);
         pointList = CSVReader.Read(inputfile);
+        if(pointList == null)
+        {
+            return;
+        }
         int filelength = pointList.Count;
         //Debug.Log("file lenght is: " + filelength + " data num is: " + dataNum + "////////////////////////");
         if (filelength - 1 > dataNum)
@@ -301,15 +294,6 @@ public class LinePlotter : MonoBehaviour
         displayValue(indexCounter);
     }
 
-    private void nameAxes()
-    {
-        GameObject xAxesNameObject = new GameObject();
-        TextMesh xAxesName = xAxesNameObject.AddComponent<TextMesh>();
-        var meshRenderer = xAxesNameObject.AddComponent<MeshRenderer>();
-        xAxesName.fontSize = 30;
-        xAxesName.text = "X";
-
-    }
     private float getsmaller(float a, float b)
     {
         if (a > b)
@@ -409,6 +393,10 @@ public class LinePlotter : MonoBehaviour
     }
     private void displayValue(int n)
     {
+        if (pointList == null)
+        {
+            return;
+        }
         //Debug.Log("n is: " + n);
         if (pointList.Count > n && n > 0)
         {
@@ -425,15 +413,7 @@ public class LinePlotter : MonoBehaviour
             float zPlot = NoDivideZero(zMax, zMin, n, zName);
             ballPoint = new Vector3(xPlot, yPlot, zPlot) * plotScale;
             //Debug.Log("printing value");
-            var objects = FindObjectsOfType<GameObject>();
-            foreach (GameObject ball in objects)
-            {
-                if (ball.name == "alice")
-                {
-                    GameObject.Destroy(ball);
-                    //Debug.Log(line);
-                }
-            }
+            cleanPrevious("alice");
 
             GameObject dataPoint = Instantiate(
                     PointPrefab,
@@ -442,6 +422,30 @@ public class LinePlotter : MonoBehaviour
             dataPoint.GetComponent<Renderer>().material.color =
                 new Color(xPlot, yPlot, zPlot);
             dataPoint.name = "alice";
+
+            GameObject dataPointX = Instantiate(
+                    PointPrefab,
+                    new Vector3(ballPoint.x,0,0),
+                    Quaternion.identity);
+            dataPointX.GetComponent<Renderer>().material.color =
+                new Color(xPlot, 0, 0);
+            dataPointX.name = "alice";
+
+            GameObject dataPointY = Instantiate(
+                    PointPrefab,
+                    new Vector3(0, ballPoint.y, 0),
+                    Quaternion.identity);
+            dataPointY.GetComponent<Renderer>().material.color =
+                new Color(0, yPlot, 0);
+            dataPointY.name = "alice";
+
+            GameObject dataPointZ = Instantiate(
+                    PointPrefab,
+                    new Vector3(0, 0, ballPoint.z),
+                    Quaternion.identity);
+            dataPointZ.GetComponent<Renderer>().material.color =
+                new Color(0, 0, zPlot);
+            dataPointZ.name = "alice";
         }
     }
 }
