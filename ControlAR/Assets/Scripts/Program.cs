@@ -18,7 +18,7 @@ using System.IO;
 public class Program : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int update;
+    private float update;
     public string fileName;
     public string path;
     private void Awake()
@@ -36,13 +36,23 @@ public class Program : MonoBehaviour
     }
     void Update()
     {
-        update += 1;
-        if (update > 200)
+        update += Time.deltaTime;
+        if (update > 3.5f)
         {
             update = 0;
             if(path != null)
             {
                 GetIoTData(path);
+                //try
+                //{
+                //    var csv = File.ReadLines(Application.temporaryCachePath + "/{0}" + path).Select((line, index) => index == 0 ? line + ",MessageNumber" : line + "," + index.ToString()).ToList();
+                //    Debug.Log(String.Join("\n", csv));
+                //    File.WriteAllLines(Application.temporaryCachePath + "/{0}" + path, csv);
+                //}
+                //catch (IOException)
+                //{
+
+                //}
             }
         }
     }
@@ -58,15 +68,15 @@ public class Program : MonoBehaviour
 
         BlobDownloadInfo download = await blobClient.DownloadAsync();
 
-        string downloadFilePath = string.Format(Application.temporaryCachePath + "/{0}", pathname);
-        try
-        {
+        string downloadFilePath = string.Format(Application.temporaryCachePath + "/{0}", pathname + ".csv");
+        //try
+        //{
             File.Delete(downloadFilePath);
-        }
-        catch(Exception e)
-        {
-
-        }
+        //}
+        //catch(Exception e)
+        //{
+        //    Debug.Log("error");
+        //}
         using (FileStream downloadFileStream = File.OpenWrite(downloadFilePath))
         {
             await download.Content.CopyToAsync(downloadFileStream);

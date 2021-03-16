@@ -80,12 +80,14 @@
     <Compile Include="Assets\Scripts\Program.cs" />
     <Compile Include="Assets\Scripts\Sceneswitch.cs" />
     <Compile Include="Assets\Scripts\SelectMachineForData.cs" />
+    <Compile Include="Assets\Scripts\SpotLightControl.cs" />
     <Compile Include="Assets\Scripts\camerajRotate.cs" />
     <Compile Include="Assets\Scripts\dataCameraMove.cs" />
     <Compile Include="Assets\Scripts\datapath.cs" />
     <Compile Include="Assets\Scripts\goBackByGesture.cs" />
     <Compile Include="Assets\Scripts\readTextLog.cs" />
     <Compile Include="Assets\Scripts\startState.cs" />
+    <Compile Include="Assets\Scripts\textLogMachineSelect.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -729,6 +731,9 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
@@ -743,9 +748,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

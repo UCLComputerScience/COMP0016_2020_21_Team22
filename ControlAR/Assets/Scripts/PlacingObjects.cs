@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.UI;
-using System.IO;
+using System;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -39,8 +39,12 @@ public class PlacingObjects : MonoBehaviour
     private float update = 0;
     private bool isMachineSelected = false;
 
+    public Button showDataButton;
+    public Button showFunctionButton;
     public GameObject functionList;
+    public GameObject dataList;
 
+    public GameObject dataHolder;
     private void Awake()
     {
         _arRaycastManager = GetComponent<ARRaycastManager>();
@@ -63,8 +67,18 @@ public class PlacingObjects : MonoBehaviour
         stopEditButton.onClick.AddListener(onStopEditing);
         selectMachine.onClick.AddListener(onSelectClick);
         stopPlacingButton.onClick.AddListener(TaskOnClick);
+        showDataButton.onClick.AddListener(onShowDataClicked);
+        showFunctionButton.onClick.AddListener(onShowFunctionClick);
         stopEditButton.gameObject.SetActive(false);
         stopPlacingButton.gameObject.SetActive(false);
+    }
+    private void onShowFunctionClick()
+    {
+        functionList.SetActive(!functionList.activeSelf);
+    }
+    private void onShowDataClicked()
+    {
+        dataList.SetActive(!dataList.activeSelf);
     }
 
     private void onStopEditing()
@@ -141,19 +155,15 @@ public class PlacingObjects : MonoBehaviour
         if (machineName != null && GameObject.Find(machineName) == null)
         {
             selectedName = machineName;
-            startPlacing = true;
-            editMachine = true;
+            whenMachinedSelectedByTouch();
+            stateMessage.text = machineName + "is selected \ntouch the plane to place machine";
             stopPlacingButton.gameObject.SetActive(true);
-            stopEditButton.gameObject.SetActive(true);
+            editMachine = true;
+            startPlacing = true;
             GameObject download = new GameObject();
             string link = System.IO.File.ReadAllText(Application.persistentDataPath + "/{0}" + machineName + "/link.txt");
             download.AddComponent<Program>().fileName = link;
-            download.GetComponent<Program>().path = machineName + ".csv";
-            isMachineSelected = true;
-            GameObject spwanedObject = Instantiate(gameObjectToInstantiate, new Vector3(0,0,0) + (Camera.main.transform.forward - Camera.main.transform.up) * 5, new Quaternion(0,0,0,0));
-            spwanedObject.transform.name = machineName;
-            spwanedObject.tag = "machine";
-            spwanedObject.transform.SetParent(transform);
+            download.GetComponent<Program>().path = machineName;
         }
     }
 
@@ -175,17 +185,6 @@ public class PlacingObjects : MonoBehaviour
         }
     }
 
-    private void showFunctions()
-    {
-        if (isMachineSelected && functionList.activeSelf == false)
-        {
-            functionList.SetActive(true);
-        }
-        else if (functionList.activeSelf == true)
-        {
-            functionList.SetActive(false);
-        }
-    }
     void Update()
     {
         if(Input.touchCount >= 2 && (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(1).phase == TouchPhase.Moved) && editMachine == true)
@@ -203,18 +202,13 @@ public class PlacingObjects : MonoBehaviour
             {
                 var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                 RaycastHit hitinfo;
-                if (isMachineSelected && editMachine == false)
+                if (isMachineSelected == true && editMachine == false)
                 {
                     if (Physics.Raycast(ray, out hitinfo))
                     {
                         if (GameObject.Find(hitinfo.transform.name).tag != "machine")
                         {
-                            stateMessage.text = "press and hold on a machine to configure";
-                            startPlacing = false;
-                            editMachine = false;
-                            isMachineSelected = false;
-                            stopPlacingButton.gameObject.SetActive(false);
-                            stopEditButton.gameObject.SetActive(false);
+                            deselected();
                         }
                     }
                 }
@@ -250,12 +244,7 @@ public class PlacingObjects : MonoBehaviour
                             }
                             else
                             {
-                                startPlacing = false;
-                                stopPlacingButton.gameObject.SetActive(false);
-                                stopEditButton.gameObject.SetActive(true);
                                 selectedName = hitinfo.transform.name;
-                                isMachineSelected = true;
-                                editMachine = false;
                                 counter = 0;
                                 Handheld.Vibrate();
                                 whenMachinedSelectedByTouch();
@@ -266,7 +255,7 @@ public class PlacingObjects : MonoBehaviour
             }
         }
         update += Time.deltaTime;
-        if (update > 3.0f) 
+        if (update > 5.0f && selectedName != null && dataList.activeSelf)  
         {
             displayData();
             update = 0;
@@ -284,69 +273,71 @@ public class PlacingObjects : MonoBehaviour
     private void whenMachinedSelectedByTouch()
     {
         stateMessage.text = selectedName + " is selected";
+        showDataButton.gameObject.SetActive(true);
+        showFunctionButton.gameObject.SetActive(true);
+        isMachineSelected = true;
+        editMachine = false;
+        startPlacing = false;
+        stopPlacingButton.gameObject.SetActive(false);
+        stopEditButton.gameObject.SetActive(true);
 
-
+    }
+    private void deselected()
+    {
+        stateMessage.text = "press and hold on a machine to configure";
+        startPlacing = false;
+        editMachine = false;
+        isMachineSelected = false;
+        stopPlacingButton.gameObject.SetActive(false);
+        stopEditButton.gameObject.SetActive(false);
+        //functionList.SetActive(false);
+        //dataList.SetActive(false);
+        showDataButton.gameObject.SetActive(false);
+        showFunctionButton.gameObject.SetActive(false);
     }
     private void displayData()
     {
-        functionList.SetActive(true);
         List<Dictionary<string, object>>  pointList = CSVReader.Read(selectedName); 
         if(pointList == null)
         {
             stateMessage.text = selectedName + " is selected\nLoading....";
             return;
         }
+        stateMessage.text = selectedName + " is selected";
         cleanseBefore("data message");
-        List<string> columnList = new List<string>(pointList[1].Keys);
-        //GameObject backgroundHolder = Instantiate(realTimeDataBackgroundToInstantiate, new Vector2(0, 0), Quaternion.identity);
-        //backgroundHolder.transform.SetParent(GameObject.Find("Main Canvas").transform);
-        //backgroundHolder.name = "data message";
-        //RectTransform holderSize = backgroundHolder.GetComponent<RectTransform>();
-        ////holderSize.sizeDelta = new Vector2(500, columnList.Count * 50 + 50);
-        int numberOfLines = 0;
+        List<string> columnList = new List<string>(pointList[1].Keys); 
+        int length = pointList.Count - 1;
         foreach (string x in columnList)
         {
             string colomnName = x;
-            int length = pointList.Count - 1;
-            bool tooLong = false;
             
+            addTextToScreen(x + ": ","data message",1);
             try
             {
                 string content = System.Convert.ToString(pointList[length][colomnName]);
-                addTextToScreen(content, new Vector2(300, numberOfLines * 50 + 30), "data message", 0); 
-                if(content.Length > 10)
-                {
-                    tooLong = true;
-                }
+                addTextToScreen(content, "data message", 0); 
             }
             catch (KeyNotFoundException)
             {
-                addTextToScreen("N/A", new Vector2(450, numberOfLines * 50 + 30), "data message", 0);
+                addTextToScreen("N/A", "data message", 0);
             }
 
-            if(colomnName.Length > 10 || tooLong)
-            {
-                numberOfLines += 1;
-            }
-            addTextToScreen(x + ": ", new Vector2(150, numberOfLines * 50 + 30), "data message",1);
-            numberOfLines += 1;
         }
 
-        //holderSize.sizeDelta = new Vector2(500, numberOfLines * 50 + 50);
-        //make a background
 
     }
-    private void addTextToScreen(string content, Vector2 position, string name, int n)
+    private void addTextToScreen(string content, string name, int n)
     {
-        GameObject textHolder = Instantiate(dataTextToInstantiate, position, Quaternion.identity);
-        textHolder.transform.SetParent(GameObject.Find("data content").transform);
-        textHolder.transform.localScale = new Vector2(1.7f,1.7f);
+        GameObject textHolder = Instantiate(dataTextToInstantiate);
+        textHolder.transform.SetParent(dataHolder.transform);
+        textHolder.transform.localScale = new Vector2(1.0f, 1.0f);
         textHolder.name = name;
-        Text message =textHolder.GetComponent<Text>();
-        if(n == 0)
+        Text message = textHolder.GetComponent<Text>();
+        if (n == 0)
         {
             message.alignment = TextAnchor.MiddleRight;
-        }else if (n == 1)
+        }
+        else if (n == 1)
         {
             message.alignment = TextAnchor.MiddleLeft;
         }

@@ -45,6 +45,7 @@ public class LinePlotter : MonoBehaviour
     private int indexCounter = 0;
 
     public GameObject PointPrefab;
+    public GameObject smallPointPrefab;
 
     public Dropdown xAxis;
     public Dropdown yAxis;
@@ -56,6 +57,7 @@ public class LinePlotter : MonoBehaviour
     public InputField Y;
     public InputField Z;
 
+    public Button changeGraphType;
     private float xMax, xMin, yMax, yMin, zMax, zMin;
     private float xThresh, yThresh, zThresh;
     
@@ -70,6 +72,7 @@ public class LinePlotter : MonoBehaviour
         X.onEndEdit.AddListener(delegate { onEnd(); }) ;
         Y.onEndEdit.AddListener(delegate { onEnd(); });
         Z.onEndEdit.AddListener(delegate { onEnd(); });
+        changeGraphType.onClick.AddListener(onChangeGraphClicked);
         lastData.onClick.AddListener(onLastClick);
         nextData.onClick.AddListener(onNexttClick);
         DrawGraph(plotScale, number_of_data);
@@ -141,9 +144,12 @@ public class LinePlotter : MonoBehaviour
         float xThresOnPlot = NoDivideZero(xMax, xMin, xThresh);
         float yThresOnPlot = NoDivideZero(yMax, yMin, yThresh);
         float zThresOnPlot = NoDivideZero(zMax, zMin, zThresh);
-        DrawLine(new Vector3(xThresOnPlot * plotScale, -1, 0), new Vector3(xThresOnPlot, 1, 0) * plotScale, new Color(xThresOnPlot, -1, 0), new Color(xThresOnPlot, 1, 0), "not ben");
-        DrawLine(new Vector3(-1, yThresOnPlot * plotScale, 0), new Vector3(1, yThresOnPlot, 0) * plotScale, new Color(-1, yThresOnPlot, 0), new Color(1, yThresOnPlot, 0), "not ben");
-        DrawLine(new Vector3(0, 0, zThresOnPlot * plotScale), new Vector3(0, 1, zThresOnPlot) * plotScale, new Color(0, 0, zThresOnPlot), new Color(0, 1, zThresOnPlot), "not ben");
+        //DrawLine(new Vector3(xThresOnPlot * plotScale, -1, 0), new Vector3(xThresOnPlot, 1, 0) * plotScale, new Color(xThresOnPlot, -1, 0), new Color(xThresOnPlot, 1, 0), "not ben");
+        //DrawLine(new Vector3(-1, yThresOnPlot * plotScale, 0), new Vector3(1, yThresOnPlot, 0) * plotScale, new Color(-1, yThresOnPlot, 0), new Color(1, yThresOnPlot, 0), "not ben");
+        //DrawLine(new Vector3(0, 0, zThresOnPlot * plotScale), new Vector3(0, 1, zThresOnPlot) * plotScale, new Color(0, 0, zThresOnPlot), new Color(0, 1, zThresOnPlot), "not ben");
+        DrawLine(new Vector3(xThresOnPlot * plotScale, -1, 0), new Vector3(xThresOnPlot, 1, 0) * plotScale,Color.red,Color.red, "not ben");
+        DrawLine(new Vector3(-1, yThresOnPlot * plotScale, 0), new Vector3(1, yThresOnPlot, 0) * plotScale, Color.green,Color.green, "not ben");
+        DrawLine(new Vector3(0, -1, zThresOnPlot * plotScale), new Vector3(0, 1, zThresOnPlot) * plotScale,Color.blue,Color.blue, "not ben");
     }
     private void showMessage(string message)
     {
@@ -207,7 +213,12 @@ public class LinePlotter : MonoBehaviour
         DrawGraph(plotScale, number_of_data);
         ThresholdUpdate();
     }
-
+    private bool line = true;
+    void onChangeGraphClicked()
+    {
+        line = !line;
+        DrawGraph(plotScale, number_of_data);
+    }
     private void DrawGraph(float scale, int dataNum)
     {
         //Debug.Log("drawgraph used");
@@ -264,8 +275,8 @@ public class LinePlotter : MonoBehaviour
 
         //draw the axes
         DrawLine(new Vector3(-1, 0, 0), new Vector3(1, 0, 0) * scale, Color.red, Color.red, "ben");
-        DrawLine(new Vector3(0, -1, 0), new Vector3(0, 1, 0) * scale, Color.blue, Color.blue, "ben");
-        DrawLine(new Vector3(0, 0, -1), new Vector3(0, 0, 1) * scale, Color.green, Color.green, "ben");
+        DrawLine(new Vector3(0, -1, 0), new Vector3(0, 1, 0) * scale, Color.green, Color.green, "ben");
+        DrawLine(new Vector3(0, 0, -1), new Vector3(0, 0, 1) * scale, Color.blue, Color.blue, "ben");
         //Loop through Pointlist
         for (var i = 0; i < pointList.Count; i++)
         {
@@ -288,7 +299,20 @@ public class LinePlotter : MonoBehaviour
                 //float x1 = System.Convert.ToSingle(pointList[i+1][xName]);
                 //float y1 = System.Convert.ToSingle(pointList[i+1][yName]);
                 //float z1 = System.Convert.ToSingle(pointList[i+1][zName]);
-                DrawLine(new Vector3(x, y, z) * scale, new Vector3(x1, y1, z1) * scale, new Color(0, y, 0), new Color(0, y1, 0), "ben");
+                if (line)
+                {
+                    DrawLine(new Vector3(x, y, z) * scale, new Vector3(x1, y1, z1) * scale, new Color(0, y, 0), new Color(0, y1, 0), "ben");
+                }
+                else
+                {
+                    GameObject dataPoint = Instantiate(
+                    smallPointPrefab,
+                    new Vector3(x, y, z) * plotScale,
+                    Quaternion.identity);
+                    dataPoint.name = "ben";
+                    dataPoint.GetComponent<Renderer>().material.color =
+                        new Color(x, y, z, 1.0f);
+                }
             }
         }
         displayValue(indexCounter);
@@ -391,6 +415,18 @@ public class LinePlotter : MonoBehaviour
             }
         }
     }
+    private bool StringComparison(string s1, string s2)
+    {
+        if (s1.Length != s2.Length) return false;
+        for (int i = 0; i < s1.Length; i++)
+        {
+            if (s1[i] != s2[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
     private void displayValue(int n)
     {
         if (pointList == null)
@@ -404,10 +440,20 @@ public class LinePlotter : MonoBehaviour
             float y = System.Convert.ToSingle(pointList[n][yName]);
             float z = System.Convert.ToSingle(pointList[n][zName]);
             string time = System.Convert.ToString(pointList[n][newName]);
-            dataType1.text = ("X: " + xName + ": " + x);
+            if(StringComparison(xName, "MessageID"))
+            {
+                dataType1.text = "time: " + time;
+            }
+            else
+            {
+                dataType1.text = ("X: " + xName + ": " + x);
+                dataTime.text = (newName + ": " + time);
+            }
+            dataType1.color = Color.red;
             dataType2.text = ("Y: " + yName + ": " + y);
+            dataType2.color = Color.green;
             dataType3.text = ("Z: " + zName + ": " + z);
-            dataTime.text = (newName + ": " + time);
+            dataType3.color = Color.blue;
             float xPlot = NoDivideZero(xMax, xMin, n, xName);
             float yPlot = NoDivideZero(yMax, yMin, n, yName);
             float zPlot = NoDivideZero(zMax, zMin, n, zName);
@@ -419,8 +465,16 @@ public class LinePlotter : MonoBehaviour
                     PointPrefab,
                     ballPoint,
                     Quaternion.identity);
-            dataPoint.GetComponent<Renderer>().material.color =
-                new Color(xPlot, yPlot, zPlot);
+            if (line)
+            {
+                dataPoint.GetComponent<Renderer>().material.color =
+                    new Color(xPlot, yPlot, zPlot);
+            }
+            else
+            {
+                dataPoint.GetComponent<Renderer>().material.color =
+                    Color.white;
+            }
             dataPoint.name = "alice";
 
             GameObject dataPointX = Instantiate(
