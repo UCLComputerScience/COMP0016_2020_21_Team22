@@ -1,15 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Events;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-
-using Microsoft.Azure.Devices;
-using System;
-using UnityEngine.Scripting;
 using System.Linq;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
