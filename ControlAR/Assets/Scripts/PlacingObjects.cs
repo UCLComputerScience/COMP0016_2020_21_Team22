@@ -156,7 +156,7 @@ public class PlacingObjects : MonoBehaviour
         {
             selectedName = machineName;
             whenMachinedSelectedByTouch();
-            stateMessage.text = machineName + "is selected \ntouch the plane to place machine";
+            stateMessage.text = machineName + " is selected \ntouch the plane to place machine";
             stopPlacingButton.gameObject.SetActive(true);
             editMachine = true;
             startPlacing = true;

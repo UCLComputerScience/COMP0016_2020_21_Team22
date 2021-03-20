@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TextLog.unity
     guid: 715cb888db053ba4eb39730ca8a80d92
+  - enabled: 1
+    path: Assets/instruction page.unity
+    guid: bf352ab57282d82449e8585b9e07c0b4
   m_configObjects:
     com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: 6adf5112722f7af42aeff9db52196bec,
       type: 2}
