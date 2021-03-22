@@ -53,7 +53,7 @@ https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tab
 
 create a blob container called: “iotoutput”
 
-Create a stream analytics job in azure to store the data from the Raspberry Pi:
+Create a stream analytics job in Azure to store the data from the Raspberry Pi into a CSV:
 
 More info on this here:
 https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi
