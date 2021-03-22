@@ -46,7 +46,7 @@ az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --
 
 Replace the value of the CONNECTION_STRING variable with the device connection string you made a note of earlier. Then save your changes to SimulatedDevice.py.
 
-Create a storage account in Azure:
+### Create a storage account in Azure:
 
 More info on this here:
 https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-cli
