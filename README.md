@@ -1,6 +1,6 @@
 # ControlAR
 
-An application that allows you to visualise data coming from IoT devices in AR and also control IoT devices in AR. 
+A mobile application that allows you to visualise data coming from IoT devices in AR and also control IoT devices in AR. 
 
 ## Deployment Manual
 
