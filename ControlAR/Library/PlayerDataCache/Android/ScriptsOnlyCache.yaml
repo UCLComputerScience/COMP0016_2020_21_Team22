@@ -1,6 +1,6 @@
 ScriptsOnlyBuild:
   usedScripts:
-    Assembly-CSharp.dll:
+    Main.dll:
     - ARfilteredplanes
     - AddingMachines
     - ButtonControl
@@ -42,11 +42,22 @@ ScriptsOnlyBuild:
     - UnityEngine.XR.Management.XRGeneralSettings
     - UnityEngine.XR.Management.XRManagerSettings
     UnityEditor.TestRunner.dll:
+    - TestRunner.Callbacks.WindowResultUpdaterDataHolder
+    - UnityEditor.TestRunner.TestLaunchers.RemotePlayerLogController
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.CommandLineTest.RunData
+    - UnityEditor.TestTools.TestRunner.RerunCallbackData
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    - UnityEditor.TestTools.TestRunner.TestRunnerWindow
     UnityEngine.SpatialTracking.dll:
     - UnityEngine.SpatialTracking.TrackedPoseDriver
+    UnityEngine.TestRunner.dll:
+    - UnityEngine.TestRunner.Utils.TestRunCallbackListener
+    - UnityEngine.TestTools.TestRunner.Callbacks.PlayModeRunnerCallback
+    - UnityEngine.TestTools.TestRunner.Callbacks.PlayerQuitHandler
+    - UnityEngine.TestTools.TestRunner.Callbacks.RemoteTestResultSender
+    - UnityEngine.TestTools.TestRunner.PlaymodeTestsController
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -238,6 +249,47 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
+    Assets/InitTestScene637520458260913381.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11466}
+    - Class: 114
+      Script: {instanceID: 12130}
+    - Class: 114
+      Script: {instanceID: 12530}
+    - Class: 114
+      Script: {instanceID: 12908}
+    - Class: 114
+      Script: {instanceID: 12926}
+    - Class: 114
+      Script: {instanceID: 13434}
+    - Class: 114
+      Script: {instanceID: 13600}
+    - Class: 114
+      Script: {instanceID: 13668}
+    - Class: 114
+      Script: {instanceID: 13686}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
     Assets/MainAR.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -256,8 +308,6 @@ ScriptsOnlyBuild:
     - Class: 43
       Script: {instanceID: 0}
     - Class: 48
-      Script: {instanceID: 0}
-    - Class: 49
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
@@ -298,8 +348,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12090}
     - Class: 114
-      Script: {instanceID: 12130}
-    - Class: 114
       Script: {instanceID: 12312}
     - Class: 114
       Script: {instanceID: 12600}
@@ -316,8 +364,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12908}
     - Class: 114
-      Script: {instanceID: 12926}
-    - Class: 114
       Script: {instanceID: 12930}
     - Class: 114
       Script: {instanceID: 13036}
@@ -329,8 +375,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13242}
     - Class: 114
       Script: {instanceID: 13266}
-    - Class: 114
-      Script: {instanceID: 13434}
     - Class: 114
       Script: {instanceID: 13450}
     - Class: 114
@@ -535,13 +579,13 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 0bd04ae38f98cf770a294f8c995ff1fc
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: textLogMachineSelect
   - hash:
       serializedVersion: 2
       Hash: 020f01164c2b70e302f746f9dea47a9a
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: DataPlotter
   - hash:
@@ -559,7 +603,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: e37d241082761020716910a879798ab1
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: Program
   - hash:
@@ -607,7 +651,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 9d6a166e83846d893b8f97afe34c497d
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: ChooseMachine
   - hash:
@@ -715,13 +759,13 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: ad1aafd1d945f58f7a1b65183d195f57
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: IoTControl
   - hash:
       serializedVersion: 2
       Hash: de6a5507f5446a2ff10ae36f51b23caf
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: ARfilteredplanes
   - hash:
@@ -757,7 +801,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: da7103e80121e3cbfe3318e69398bd3f
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: goBackByGesture
   - hash:
@@ -799,19 +843,19 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 629e66a3c761f3cd957e59844fe33a57
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: ActionOnMachine
   - hash:
       serializedVersion: 2
       Hash: 0bd04ae38f98cf770a294f8c995ff1fc
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: SelectMachineForData
   - hash:
       serializedVersion: 2
       Hash: bbf42b78866899af2f08991907bd0796
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: LinePlotter
   - hash:
@@ -823,7 +867,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: f0dc6a919b33f03ef361f43120262df9
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: camerajRotate
   - hash:
@@ -835,7 +879,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: ecfc0cb6e45891871d68c00f91973434
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: dataCameraMove
   - hash:
@@ -859,7 +903,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: cd61e237890f48e7e0379f1b6836a9e5
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: PlacingObjects
   - hash:
@@ -871,13 +915,13 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 535705bb5ca1fcb6aa5ba4528b927378
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: startState
   - hash:
       serializedVersion: 2
       Hash: a9cc6ca8a076f545007b805e74b989be
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: ButtonControl
   - hash:
@@ -907,7 +951,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: d9e8eca3d4f596cdc7c3f10ea6b14917
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: FilteredPlanesCanvas
   - hash:
@@ -955,7 +999,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 8cafbdbd7792611e54818e406d66143a
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: AddingMachines
   - hash:
@@ -979,7 +1023,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 53a5cfa9eb8b34efcf94b645b4c299cb
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: Sceneswitch
   - hash:
@@ -1063,7 +1107,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: f3e53b11055c66d43770e475fcca8fed
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: datapath
   - hash:
@@ -1087,7 +1131,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: BlobModel
   - hash:
@@ -1105,7 +1149,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: b4c6e0d64220627d0f89f9e0ec8ab872
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: readTextLog
   - hash:
@@ -1207,7 +1251,7 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 0f87077ea4f321eb87fdbd75555610ef
-    assemblyName: Assembly-CSharp.dll
+    assemblyName: Main.dll
     namespaceName: 
     className: SpotLightControl
   - hash:
@@ -1222,11 +1266,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Main.dll
+    namespaceName: 
+    className: AzureConnection
   platform: 13
   scenePathNames:
+  - Assets/InitTestScene637520458260913381.unity
   - Assets/MainAR.unity
   - Assets/Data2.unity
   - Assets/DataInAR.unity
   - Assets/TextLog.unity
   - Assets/instruction page.unity
-  playerPath: D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/controlAR_0.4.apk
+  playerPath: D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Temp/UnityTempFile-5fa0212002947fa48a95d891617e6c23/PlayerWithTests/PlayerWithTests.apk

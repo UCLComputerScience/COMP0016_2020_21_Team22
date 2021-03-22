@@ -74,15 +74,18 @@ public class PlacingObjects : MonoBehaviour
     }
     private void onShowFunctionClick()
     {
+        //show the list of actions you can do
         functionList.SetActive(!functionList.activeSelf);
     }
     private void onShowDataClicked()
     {
+        //show real time data
         dataList.SetActive(!dataList.activeSelf);
     }
 
     private void onStopEditing()
     {
+        //when "confirm" is clicked to stop the object from moving
         startPlacing = false;
         //stopEditButton.gameObject.SetActive(false);
         stopPlacingButton.gameObject.SetActive(!stopPlacingButton.IsActive());
@@ -100,7 +103,7 @@ public class PlacingObjects : MonoBehaviour
         cleanseBefore("data message");
     }
 
-    private void cleanseBefore(string name)
+    public void cleanseBefore(string name)
     {
 
         var toDelete = FindObjectsOfType<GameObject>();
@@ -114,6 +117,8 @@ public class PlacingObjects : MonoBehaviour
     }
     void onSelectClick()
     {
+        //whe the user clicks on the button to selected a machine to place on the AR envrionment
+        // spawn a canvas with all the machines the account have.
         var allMachines = System.IO.Directory.GetDirectories(Application.persistentDataPath);
         GameObject selectionCanvas = Instantiate(canvasHolder);
         selectionCanvas.name = "machine selection page";
@@ -129,6 +134,7 @@ public class PlacingObjects : MonoBehaviour
             Button machineButtons = machineButtonsHolder.GetComponent<Button>();
             if (machineButtons != null)
             {
+                //for all machines, create a button with a listener
                 machineButtons.transform.name = machine;
                 machineButtons.onClick.AddListener(delegate { onMachineSelected(machineName); });
             }
@@ -145,12 +151,17 @@ public class PlacingObjects : MonoBehaviour
     }
     private string getDifferenceAtEnd(string a, string b)
     {
+        // get the difference at the end  for two strings
+        //this is only used to get the machine name and its path
+        //the path is the root plus machine name
+        //so only need the length of the root path
         string c;
         c = a.Substring(b.Length);
         return c;
     }
     void onMachineSelected(string machineName)
     {
+        
         GameObject.Destroy(GameObject.Find("machine selection page"));
         if (machineName != null && GameObject.Find(machineName) == null)
         {
@@ -169,6 +180,7 @@ public class PlacingObjects : MonoBehaviour
 
     void TaskOnClick()
     {
+        //when changing between moving the machine and rotation/size
         startPlacing = !startPlacing;
 
         Text buttonText = stopPlacingButton.GetComponentInChildren<Text>();
@@ -187,8 +199,10 @@ public class PlacingObjects : MonoBehaviour
 
     void Update()
     {
+        // get the finger input and do corresponding actions
         if(Input.touchCount >= 2 && (Input.GetTouch(0).phase == TouchPhase.Moved || Input.GetTouch(1).phase == TouchPhase.Moved) && editMachine == true)
         {
+            //control size
             Vector2 touch0, touch1;
             float distance;
             touch0 = Input.GetTouch(0).position;
@@ -198,12 +212,14 @@ public class PlacingObjects : MonoBehaviour
         }
         else if (Input.touchCount == 1)
         {
+            //if finger is not touching any UI e.g. buttons, ...
             if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
             {
                 var ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                 RaycastHit hitinfo;
                 if (isMachineSelected == true && editMachine == false)
                 {
+                    //deselect
                     if (Physics.Raycast(ray, out hitinfo))
                     {
                         if (GameObject.Find(hitinfo.transform.name).tag != "machine")
@@ -216,10 +232,12 @@ public class PlacingObjects : MonoBehaviour
                 {
                     if (startPlacing == true)
                     {
+                        //move model
                         placingObject(selectedName);
                     }
                     else if (Input.GetTouch(0).phase != TouchPhase.Began)
                     {
+                        //rotation
                         Vector2 touchRotatePosition = Input.GetTouch(0).position;
                         Vector3 newTouchAngle = new Vector3(touchRotatePosition.x, touchRotatePosition.y, 0);
                         var theMachine = GameObject.Find(selectedName);
@@ -238,6 +256,7 @@ public class PlacingObjects : MonoBehaviour
                     {
                         if (GameObject.Find(hitinfo.transform.name).tag == "machine")
                         {
+                            //press and hold to select machine
                             if (counter < 0.5f)
                             {
                                 counter += Time.deltaTime;
@@ -257,6 +276,7 @@ public class PlacingObjects : MonoBehaviour
         update += Time.deltaTime;
         if (update > 5.0f && selectedName != null && dataList.activeSelf)  
         {
+            // refresh the real time data
             displayData();
             update = 0;
         }
@@ -297,6 +317,7 @@ public class PlacingObjects : MonoBehaviour
     }
     private void displayData()
     {
+        // display data in the scroll view 
         List<Dictionary<string, object>>  pointList = CSVReader.Read(selectedName); 
         if(pointList == null)
         {

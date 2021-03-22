@@ -13,12 +13,11 @@ public class IoTControl : MonoBehaviour
 {
     public Button lightTrigger;
     private static ServiceClient s_serviceClient;
-        
-        // Connection string for your IoT Hub
-        // az iot hub show-connection-string --hub-name {your iot hub name} --policy-name service
-    private static string IotConnectionString = "HostName=MohseenHub.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey=lXC2t+EC5ZFHK+4ZouNwamc93gcZwQ5UsxLBXOFzZKI=";
-    private string storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=mohseenhubblob;AccountKey=SSMMWgXQnBk0oZr7YBbmmC4ZY5YYY/TypNX9CVXiDqFQTEHqSZ9IYl9JPUS+HXbI2y5HBsijkEdrcOTT5B4UrA==;EndpointSuffix=core.windows.net";
 
+    // Connection string for your IoT Hub
+    // az iot hub show-connection-string --hub-name {your iot hub name} --policy-name service
+    private static string IotConnectionString = AzureConnection.IotConnectionString;
+    private string storageConnectionString = AzureConnection.storageConnectionString;
 
     // Start is called before the first frame update
     void Start()

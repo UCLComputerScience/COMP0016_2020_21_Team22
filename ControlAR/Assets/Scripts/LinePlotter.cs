@@ -64,19 +64,24 @@ public class LinePlotter : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //set the threshold as the largest value if not specified
         xThresh = xMax;
         yThresh = yMax;
         zThresh = zMax;
+        //chaging the scale
         scaleControl.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+        //show threshold
         thresholdButton.onClick.AddListener(onThresholdClick);
         X.onEndEdit.AddListener(delegate { onEnd(); }) ;
         Y.onEndEdit.AddListener(delegate { onEnd(); });
         Z.onEndEdit.AddListener(delegate { onEnd(); });
         changeGraphType.onClick.AddListener(onChangeGraphClicked);
+        //get which data to focus on
         lastData.onClick.AddListener(onLastClick);
         nextData.onClick.AddListener(onNexttClick);
         DrawGraph(plotScale, number_of_data);
         displayValue(indexCounter);
+        //iterate through the list and get all the data names
         List<string> columnList = new List<string>(pointList[1].Keys);
         foreach(var item in columnList)
         {
@@ -92,6 +97,7 @@ public class LinePlotter : MonoBehaviour
         zAxis.onValueChanged.AddListener(delegate { OnZChanged(); });
 
         plotScale = scaleControl.value;
+        //draw the graph
         DrawGraph(plotScale, number_of_data);
 
     }
@@ -144,6 +150,7 @@ public class LinePlotter : MonoBehaviour
         float xThresOnPlot = NoDivideZero(xMax, xMin, xThresh);
         float yThresOnPlot = NoDivideZero(yMax, yMin, yThresh);
         float zThresOnPlot = NoDivideZero(zMax, zMin, zThresh);
+        // draw the three thresholds
         //DrawLine(new Vector3(xThresOnPlot * plotScale, -1, 0), new Vector3(xThresOnPlot, 1, 0) * plotScale, new Color(xThresOnPlot, -1, 0), new Color(xThresOnPlot, 1, 0), "not ben");
         //DrawLine(new Vector3(-1, yThresOnPlot * plotScale, 0), new Vector3(1, yThresOnPlot, 0) * plotScale, new Color(-1, yThresOnPlot, 0), new Color(1, yThresOnPlot, 0), "not ben");
         //DrawLine(new Vector3(0, 0, zThresOnPlot * plotScale), new Vector3(0, 1, zThresOnPlot) * plotScale, new Color(0, 0, zThresOnPlot), new Color(0, 1, zThresOnPlot), "not ben");
@@ -198,6 +205,7 @@ public class LinePlotter : MonoBehaviour
 
     private void Update()
     {
+        //refresh the graph in time intervals
         frameCounter += 1;
         if (frameCounter > 200)
         {
@@ -216,6 +224,7 @@ public class LinePlotter : MonoBehaviour
     private bool line = true;
     void onChangeGraphClicked()
     {
+        //the type of the graph
         line = !line;
         DrawGraph(plotScale, number_of_data);
     }
@@ -224,6 +233,7 @@ public class LinePlotter : MonoBehaviour
         //Debug.Log("drawgraph used");
         // Set pointlist to results of function Reader with argument inputfile
         //Debug.Log(transform.position);
+        //get the latest n data from the file
         pointList = CSVReader.Read(inputfile);
         if(pointList == null)
         {
@@ -250,7 +260,7 @@ public class LinePlotter : MonoBehaviour
         //foreach (string key in columnList)
         //    Debug.Log("Column name is " + key);
 
-        // Assign column name from columnList to Name variables
+        // assign column name from columnList to name variables
 
         xName = columnList[columnX];
         yName = columnList[columnY];
@@ -301,10 +311,12 @@ public class LinePlotter : MonoBehaviour
                 //float z1 = System.Convert.ToSingle(pointList[i+1][zName]);
                 if (line)
                 {
+                    //draw lines connecting the two data points
                     DrawLine(new Vector3(x, y, z) * scale, new Vector3(x1, y1, z1) * scale, new Color(0, y, 0), new Color(0, y1, 0), "ben");
                 }
                 else
                 {
+                    // if the graph type is not line then spawn balls
                     GameObject dataPoint = Instantiate(
                     smallPointPrefab,
                     new Vector3(x, y, z) * plotScale,
@@ -405,6 +417,7 @@ public class LinePlotter : MonoBehaviour
     }
     private void cleanPrevious(string name)
     {
+        //for cleaning the screen 
         var objects = FindObjectsOfType<GameObject>();
         foreach (GameObject line in objects)
         {
@@ -429,6 +442,7 @@ public class LinePlotter : MonoBehaviour
     }
     private void displayValue(int n)
     {
+        //highlight the data selected and display its value in text and on the axes
         if (pointList == null)
         {
             return;
