@@ -12,7 +12,7 @@ Prerequisites:
 
 •	Azure account
 
-•	Mobile Device – specifically Android device (will compile for iOS but application was not designed for iOS) 
+•	Mobile Device – specifically an Android device (will compile for iOS but application was not designed for iOS) 
 
 •	Raspberry Pi 
 
