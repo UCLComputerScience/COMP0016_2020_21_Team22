@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Tests\ARFunctionTester.cs" />
+    <Compile Include="Assets\Tests\GraphFunctionTester.cs" />
     <None Include="Assets\Tests\Tests.asmdef" />
     <Reference Include="UnityEngine">
       <HintPath>D:/Unity/2019.4.18f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
@@ -596,6 +597,9 @@
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>

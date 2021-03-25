@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 9}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -99,10 +99,10 @@ MonoBehaviour:
     y: 390
     width: 1035
     height: 478
-  m_MinSize: {x: 434, y: 271}
-  m_MaxSize: {x: 18004, y: 10021}
+  m_MinSize: {x: 435, y: 271}
+  m_MaxSize: {x: 18005, y: 10021}
   vertical: 0
-  controlID: 121
+  controlID: 131
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -148,8 +148,8 @@ MonoBehaviour:
     y: 0
     width: 304
     height: 478
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 23}
@@ -176,10 +176,10 @@ MonoBehaviour:
     y: 30
     width: 1500
     height: 868
-  m_MinSize: {x: 709, y: 492}
-  m_MaxSize: {x: 22004, y: 14042}
+  m_MinSize: {x: 711, y: 492}
+  m_MaxSize: {x: 22006, y: 14042}
   vertical: 0
-  controlID: 162
+  controlID: 41
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -199,8 +199,8 @@ MonoBehaviour:
     y: 0
     width: 465
     height: 868
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -229,7 +229,7 @@ MonoBehaviour:
     y: 0
     width: 1500
     height: 918
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &10
 MonoBehaviour:
@@ -295,10 +295,10 @@ MonoBehaviour:
     y: 0
     width: 1035
     height: 868
-  m_MinSize: {x: 434, y: 492}
-  m_MaxSize: {x: 18004, y: 14042}
+  m_MinSize: {x: 435, y: 492}
+  m_MaxSize: {x: 18005, y: 14042}
   vertical: 1
-  controlID: 120
+  controlID: 42
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -320,8 +320,8 @@ MonoBehaviour:
     y: 0
     width: 1035
     height: 390
-  m_MinSize: {x: 401, y: 221}
-  m_MaxSize: {x: 8001, y: 4021}
+  m_MinSize: {x: 403, y: 221}
+  m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
   controlID: 43
 --- !u!114 &14
@@ -377,7 +377,7 @@ MonoBehaviour:
     height: 457
   m_ViewDataDictionary: {fileID: 0}
   m_Spl:
-    ID: 405
+    ID: 196
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes: 2201000061000000
@@ -389,7 +389,7 @@ MonoBehaviour:
     lastTotalSize: 387
     splitSize: 6
     xOffset: 0
-  m_TestTypeToolbarIndex: 0
+  m_TestTypeToolbarIndex: 1
   m_PlayModeTestListGUI:
     m_Window: {fileID: 15}
     newResultList:
@@ -397,9 +397,9 @@ MonoBehaviour:
       uniqueId: '[ControlAR][suite]'
       name: ControlAR
       fullName: ControlAR
-      resultStatus: 2
-      duration: 0.2776213
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.6267454
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -413,9 +413,9 @@ MonoBehaviour:
       uniqueId: '[Tests.dll][suite]'
       name: Tests.dll
       fullName: D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/Tests.dll
-      resultStatus: 2
-      duration: 0.243323
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.574725
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -429,9 +429,9 @@ MonoBehaviour:
       uniqueId: Tests.dll/[Tests][suite]
       name: Tests
       fullName: Tests
-      resultStatus: 2
-      duration: 0.2359974
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.5503292
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -445,9 +445,9 @@ MonoBehaviour:
       uniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
       name: ARFunctionTester
       fullName: Tests.ARFunctionTester
-      resultStatus: 2
-      duration: 0.222513
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.425299
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -457,29 +457,29 @@ MonoBehaviour:
       categories: []
       parentId: 1008
       parentUniqueId: Tests.dll/[Tests][suite]
-    - id: 1009
-      uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.ARFunctionTesterSimplePasses]
-      name: ARFunctionTesterSimplePasses
-      fullName: Tests.ARFunctionTester.ARFunctionTesterSimplePasses
-      resultStatus: 2
-      duration: 0.0033479
-      messages: Method marked with UnityTest must return IEnumerator.
+    - id: 1010
+      uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.addTextTest]
+      name: addTextTest
+      fullName: Tests.ARFunctionTester.addTextTest
+      resultStatus: 1
+      duration: 0.1108927
+      messages: 
       output: 
       stacktrace: 
-      notRunnable: 1
+      notRunnable: 0
       ignoredOrSkipped: 0
       description: 
       isSuite: 0
       categories:
       - Uncategorized
-      parentId: 1008
+      parentId: 1001
       parentUniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
     - id: 1006
       uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.ARFunctionTesterWithEnumeratorPasses]
       name: ARFunctionTesterWithEnumeratorPasses
       fullName: Tests.ARFunctionTester.ARFunctionTesterWithEnumeratorPasses
       resultStatus: 1
-      duration: 0.0377953
+      duration: 0.0672214
       messages: 
       output: 
       stacktrace: 
@@ -491,18 +491,307 @@ MonoBehaviour:
       - Uncategorized
       parentId: 1004
       parentUniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
-    m_ResultText: 'ARFunctionTesterSimplePasses (0.003s)
+    - id: 1002
+      uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.cleanserSimplePasses]
+      name: cleanserSimplePasses
+      fullName: Tests.ARFunctionTester.cleanserSimplePasses
+      resultStatus: 1
+      duration: 0.0096037
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
+    - id: 1008
+      uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.dataListTest]
+      name: dataListTest
+      fullName: Tests.ARFunctionTester.dataListTest
+      resultStatus: 1
+      duration: 0.0016625
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
+    - id: 1017
+      uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.deselectTest]
+      name: deselectTest
+      fullName: Tests.ARFunctionTester.deselectTest
+      resultStatus: 1
+      duration: 0.0131578
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
+    - id: 1009
+      uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.displayTest]
+      name: displayTest
+      fullName: Tests.ARFunctionTester.displayTest
+      resultStatus: 1
+      duration: 0.0134104
+      messages: 
+      output: 'file not exist
 
-      ---
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
+    - id: 1007
+      uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.functionTest]
+      name: functionTest
+      fullName: Tests.ARFunctionTester.functionTest
+      resultStatus: 1
+      duration: 0.0015562
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
+    - id: 1005
+      uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.getDifferenceTest]
+      name: getDifferenceTest
+      fullName: Tests.ARFunctionTester.getDifferenceTest
+      resultStatus: 1
+      duration: 0.0116239
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
+    - id: 1004
+      uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.MachineSelectTest]
+      name: MachineSelectTest
+      fullName: Tests.ARFunctionTester.MachineSelectTest
+      resultStatus: 1
+      duration: 0.0021219
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
+    - id: 1003
+      uniqueId: Tests.dll/Tests/ARFunctionTester/[Tests][Tests.ARFunctionTester.TaskonClickSimplePasses]
+      name: TaskonClickSimplePasses
+      fullName: Tests.ARFunctionTester.TaskonClickSimplePasses
+      resultStatus: 1
+      duration: 0.0030766
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1001
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.ARFunctionTester][suite]
+    - id: 1012
+      uniqueId: Tests.dll/Tests/[Tests][Tests.GraphFunctionTester][suite]
+      name: GraphFunctionTester
+      fullName: Tests.GraphFunctionTester
+      resultStatus: 1
+      duration: 0.1015536
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1016
+      parentUniqueId: Tests.dll/[Tests][suite]
+    - id: 1017
+      uniqueId: Tests.dll/Tests/GraphFunctionTester/[Tests][Tests.GraphFunctionTester.DrawLIneTest]
+      name: DrawLIneTest
+      fullName: Tests.GraphFunctionTester.DrawLIneTest
+      resultStatus: 1
+      duration: 0.0256193
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.GraphFunctionTester][suite]
+    - id: 1014
+      uniqueId: Tests.dll/Tests/GraphFunctionTester/[Tests][Tests.GraphFunctionTester.GraphFunctionTesterWithEnumeratorPasses]
+      name: GraphFunctionTesterWithEnumeratorPasses
+      fullName: Tests.GraphFunctionTester.GraphFunctionTesterWithEnumeratorPasses
+      resultStatus: 1
+      duration: 0.0157281
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.GraphFunctionTester][suite]
+    - id: 1016
+      uniqueId: Tests.dll/Tests/GraphFunctionTester/[Tests][Tests.GraphFunctionTester.graphTypeChange]
+      name: graphTypeChange
+      fullName: Tests.GraphFunctionTester.graphTypeChange
+      resultStatus: 1
+      duration: 0.0215839
+      messages: 
+      output: 'file not exist
 
-      Method
-      marked with UnityTest must return IEnumerator.'
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.GraphFunctionTester][suite]
+    - id: 1018
+      uniqueId: Tests.dll/Tests/GraphFunctionTester/[Tests][Tests.GraphFunctionTester.NoDivideZeroTest1]
+      name: NoDivideZeroTest1
+      fullName: Tests.GraphFunctionTester.NoDivideZeroTest1
+      resultStatus: 1
+      duration: 0.0050078
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.GraphFunctionTester][suite]
+    - id: 1019
+      uniqueId: Tests.dll/Tests/GraphFunctionTester/[Tests][Tests.GraphFunctionTester.NoDivideZeroTest2]
+      name: NoDivideZeroTest2
+      fullName: Tests.GraphFunctionTester.NoDivideZeroTest2
+      resultStatus: 1
+      duration: 0.00235
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.GraphFunctionTester][suite]
+    - id: 1015
+      uniqueId: Tests.dll/Tests/GraphFunctionTester/[Tests][Tests.GraphFunctionTester.scaleUpdateTest]
+      name: scaleUpdateTest
+      fullName: Tests.GraphFunctionTester.scaleUpdateTest
+      resultStatus: 1
+      duration: 0.0072989
+      messages: 
+      output: 'file not exist
+
+'
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.GraphFunctionTester][suite]
+    - id: 1013
+      uniqueId: Tests.dll/Tests/GraphFunctionTester/[Tests][Tests.GraphFunctionTester.ThresholdClickTest]
+      name: ThresholdClickTest
+      fullName: Tests.GraphFunctionTester.ThresholdClickTest
+      resultStatus: 1
+      duration: 0.0024088
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.GraphFunctionTester][suite]
+    - id: 1014
+      uniqueId: Tests.dll/Tests/GraphFunctionTester/[Tests][Tests.GraphFunctionTester.thresholdUpdateTest]
+      name: thresholdUpdateTest
+      fullName: Tests.GraphFunctionTester.thresholdUpdateTest
+      resultStatus: 1
+      duration: 0.0027593
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1012
+      parentUniqueId: Tests.dll/Tests/[Tests][Tests.GraphFunctionTester][suite]
+    m_ResultText: DrawLIneTest (0.026s)
     m_ResultStacktrace: 
     m_TestListState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 7e583057
-      m_LastClickedID: 1462786174
-      m_ExpandedIDs: ec8c24e1787b23f3e557abf78359db41ffffff7f
+      scrollPos: {x: 0, y: 82}
+      m_SelectedIDs: 99ef9ec4
+      m_LastClickedID: -996216935
+      m_ExpandedIDs: ec8c24e1787b23f3e557abf7d37c60138359db41ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -536,9 +825,9 @@ MonoBehaviour:
       uniqueId: '[ControlAR][suite]'
       name: ControlAR
       fullName: ControlAR
-      resultStatus: 2
-      duration: 0.2292712
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 1.0928603
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -552,9 +841,9 @@ MonoBehaviour:
       uniqueId: '[EditModeTest.dll][suite]'
       name: EditModeTest.dll
       fullName: D:/Unity/Unity projects/COMP0016_2020_21_Team22/ControlAR/Library/ScriptAssemblies/EditModeTest.dll
-      resultStatus: 2
-      duration: 0.1533163
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.97816
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -568,9 +857,9 @@ MonoBehaviour:
       uniqueId: EditModeTest.dll/[EditModeTest][Tests][suite]
       name: Tests
       fullName: Tests
-      resultStatus: 2
-      duration: 0.1489763
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.9686391
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -584,9 +873,9 @@ MonoBehaviour:
       uniqueId: EditModeTest.dll/Tests/[EditModeTest][Tests.ARTest][suite]
       name: ARTest
       fullName: Tests.ARTest
-      resultStatus: 2
-      duration: 0.1134859
-      messages: One or more child tests had errors
+      resultStatus: 1
+      duration: 0.1297309
+      messages: 
       output: 
       stacktrace: 
       notRunnable: 0
@@ -600,19 +889,11 @@ MonoBehaviour:
       uniqueId: EditModeTest.dll/Tests/ARTest/[EditModeTest][Tests.ARTest.ARTestSimplePasses]
       name: ARTestSimplePasses
       fullName: Tests.ARTest.ARTestSimplePasses
-      resultStatus: 2
-      duration: 0.0329531
-      messages: "  Expected: False\r\n  But was:  True\r\n"
-      output: 'Destroy may not be called from edit mode! Use DestroyImmediate instead.
-
-        Destroying
-        an object in edit mode destroys it permanently.
-
-'
-      stacktrace: 'at Tests.ARTest.ARTestSimplePasses () [0x00023] in D:\Unity\Unity
-        projects\COMP0016_2020_21_Team22\ControlAR\Assets\EditModeTest\ARTest.cs:19
-
-'
+      resultStatus: 1
+      duration: 0.0140137
+      messages: 
+      output: 
+      stacktrace: 
       notRunnable: 0
       ignoredOrSkipped: 0
       description: 
@@ -626,7 +907,7 @@ MonoBehaviour:
       name: ARTestWithEnumeratorPasses
       fullName: Tests.ARTest.ARTestWithEnumeratorPasses
       resultStatus: 1
-      duration: 0.0527888
+      duration: 0.0666865
       messages: 
       output: 
       stacktrace: 
@@ -639,11 +920,44 @@ MonoBehaviour:
       parentId: 1001
       parentUniqueId: EditModeTest.dll/Tests/[EditModeTest][Tests.ARTest][suite]
     - id: 1004
+      uniqueId: EditModeTest.dll/Tests/[EditModeTest][Tests.AzureConnectionTest][suite]
+      name: AzureConnectionTest
+      fullName: Tests.AzureConnectionTest
+      resultStatus: 1
+      duration: 0.7801377
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 1
+      categories: []
+      parentId: 1011
+      parentUniqueId: EditModeTest.dll/[EditModeTest][Tests][suite]
+    - id: 1005
+      uniqueId: EditModeTest.dll/Tests/AzureConnectionTest/[EditModeTest][Tests.AzureConnectionTest.AzureConnectionDownloadTest]
+      name: AzureConnectionDownloadTest
+      fullName: Tests.AzureConnectionTest.AzureConnectionDownloadTest
+      resultStatus: 1
+      duration: 0.7695632
+      messages: 
+      output: 
+      stacktrace: 
+      notRunnable: 0
+      ignoredOrSkipped: 0
+      description: 
+      isSuite: 0
+      categories:
+      - Uncategorized
+      parentId: 1004
+      parentUniqueId: EditModeTest.dll/Tests/[EditModeTest][Tests.AzureConnectionTest][suite]
+    - id: 1004
       uniqueId: EditModeTest.dll/Tests/[EditModeTest][Tests.NewTestScript][suite]
       name: NewTestScript
       fullName: Tests.NewTestScript
       resultStatus: 1
-      duration: 0.0296629
+      duration: 0.0490706
       messages: 
       output: 
       stacktrace: 
@@ -659,7 +973,7 @@ MonoBehaviour:
       name: NewTestScriptSimplePasses
       fullName: Tests.NewTestScript.NewTestScriptSimplePasses
       resultStatus: 1
-      duration: 0.0008708
+      duration: 0.0012384
       messages: 
       output: 
       stacktrace: 
@@ -676,7 +990,7 @@ MonoBehaviour:
       name: NewTestScriptWithEnumeratorPasses
       fullName: Tests.NewTestScript.NewTestScriptWithEnumeratorPasses
       resultStatus: 1
-      duration: 0.0220943
+      duration: 0.0251584
       messages: 
       output: 
       stacktrace: 
@@ -694,7 +1008,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 787b23f3ffffff7f
+      m_ExpandedIDs: 9d1c3095787b23f305d9ce3d7cce8043ffffff7f
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -811,20 +1125,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Unity\Unity projects\COMP0016_2020_21_Team22\ControlAR
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 76370000
-    m_LastClickedID: 14198
-    m_ExpandedIDs: 000000006237000064370000663700007a37000000ca9a3b
+    m_SelectedIDs: 7c3a0000
+    m_LastClickedID: 14972
+    m_ExpandedIDs: 00000000783a00007a3a00007c3a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -852,7 +1166,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000623700006437000066370000
+    m_ExpandedIDs: 00000000783a00007a3a00007c3a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -904,7 +1218,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 22}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 110
@@ -975,9 +1289,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 3ee7ffff58e7ffff90e7fffface7ffff60e8ffff68e8ffff6ee8ffff7ee8ffffcce8ffffd0e8ffff00e9ffff1ae9ffff38e9ffffc2e9fffffee9ffff1ceaffffa2eaffffeeeaffffbeecffffd8ecffff9aedffffa6edffffb0edffffc4edffffd6edffff5af5ffff74f5ffffacf5ffffc8f5ffff7af6ffff82f6ffff88f6ffff98f6ffffe6f6ffffeaf6ffff0ef7ffff26f7ffff42f7ffff76f7ffffc6f9ffffdcf9ffff66fbffff
+      m_SelectedIDs: 763e0000
+      m_LastClickedID: 15990
+      m_ExpandedIDs: cef9ffffdcf9ffff66fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1150,7 +1464,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 720, y: 1280}
+  m_TargetSize: {x: 918, y: 516}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -1165,10 +1479,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -180
-    m_HBaseRangeMax: 180
-    m_VBaseRangeMin: -320
-    m_VBaseRangeMax: 320
+    m_HBaseRangeMin: -229.5
+    m_HBaseRangeMax: 229.5
+    m_VBaseRangeMin: -129
+    m_VBaseRangeMax: 129
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1188,7 +1502,7 @@ MonoBehaviour:
       y: 21
       width: 459
       height: 436
-    m_Scale: {x: 0.68125, y: 0.68125}
+    m_Scale: {x: 1, y: 1}
     m_Translation: {x: 229.5, y: 218}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -1196,12 +1510,12 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -336.88074
-      y: -320
-      width: 673.7615
-      height: 640
+      x: -229.5
+      y: -218
+      width: 459
+      height: 436
     m_MinimalGUI: 1
-  m_defaultScale: 0.68125
+  m_defaultScale: 1
   m_LastWindowPixelSize: {x: 918, y: 914}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1

@@ -28,7 +28,7 @@ public class PlacingObjects : MonoBehaviour
     public GameObject buttonHolder;
 
     public TextMeshProUGUI stateMessage;
-    string selectedName = null;
+    public string selectedName = null;
     public Button stopEditButton;
 
     Vector3 touchAngle = new Vector3(0, 0, 0);
@@ -72,12 +72,12 @@ public class PlacingObjects : MonoBehaviour
         stopEditButton.gameObject.SetActive(false);
         stopPlacingButton.gameObject.SetActive(false);
     }
-    private void onShowFunctionClick()
+    public void onShowFunctionClick()
     {
         //show the list of actions you can do
         functionList.SetActive(!functionList.activeSelf);
     }
-    private void onShowDataClicked()
+    public void onShowDataClicked()
     {
         //show real time data
         dataList.SetActive(!dataList.activeSelf);
@@ -149,7 +149,7 @@ public class PlacingObjects : MonoBehaviour
 
 
     }
-    private string getDifferenceAtEnd(string a, string b)
+    public string getDifferenceAtEnd(string a, string b)
     {
         // get the difference at the end  for two strings
         //this is only used to get the machine name and its path
@@ -159,10 +159,16 @@ public class PlacingObjects : MonoBehaviour
         c = a.Substring(b.Length);
         return c;
     }
-    void onMachineSelected(string machineName)
+    public void onMachineSelected(string machineName)
     {
-        
-        GameObject.Destroy(GameObject.Find("machine selection page"));
+        try
+        {
+            GameObject.Destroy(GameObject.Find("machine selection page"));
+        }
+        catch (Exception)
+        {
+
+        }
         if (machineName != null && GameObject.Find(machineName) == null)
         {
             selectedName = machineName;
@@ -172,13 +178,14 @@ public class PlacingObjects : MonoBehaviour
             editMachine = true;
             startPlacing = true;
             GameObject download = new GameObject();
+            download.name = machineName + " downloader";
             string link = System.IO.File.ReadAllText(Application.persistentDataPath + "/{0}" + machineName + "/link.txt");
-            download.AddComponent<Program>().fileName = link;
-            download.GetComponent<Program>().path = machineName;
+            download.AddComponent<CSVDownloader>().fileName = link;
+            download.GetComponent<CSVDownloader>().path = machineName;
         }
     }
 
-    void TaskOnClick()
+    public void TaskOnClick()
     {
         //when changing between moving the machine and rotation/size
         startPlacing = !startPlacing;
@@ -302,7 +309,7 @@ public class PlacingObjects : MonoBehaviour
         stopEditButton.gameObject.SetActive(true);
 
     }
-    private void deselected()
+    public void deselected()
     {
         stateMessage.text = "press and hold on a machine to configure";
         startPlacing = false;
@@ -315,7 +322,7 @@ public class PlacingObjects : MonoBehaviour
         showDataButton.gameObject.SetActive(false);
         showFunctionButton.gameObject.SetActive(false);
     }
-    private void displayData()
+    public void displayData()
     {
         // display data in the scroll view 
         List<Dictionary<string, object>>  pointList = CSVReader.Read(selectedName); 
@@ -347,7 +354,7 @@ public class PlacingObjects : MonoBehaviour
 
 
     }
-    private void addTextToScreen(string content, string name, int n)
+    public void addTextToScreen(string content, string name, int n)
     {
         GameObject textHolder = Instantiate(dataTextToInstantiate);
         textHolder.transform.SetParent(dataHolder.transform);

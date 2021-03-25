@@ -46,8 +46,8 @@ public class textLogMachineSelect : MonoBehaviour
         {
             GameObject download = new GameObject();
             string link = System.IO.File.ReadAllText(Application.persistentDataPath + "/{0}" + machineName + "/link.txt");
-            download.AddComponent<Program>().fileName = link;
-            download.GetComponent<Program>().path = machineName;
+            download.AddComponent<CSVDownloader>().fileName = link;
+            download.GetComponent<CSVDownloader>().path = machineName;
             GameObject.Find("get content").GetComponent<readTextLog>().selectedName = machineName;
 
             GameObject goBack = new GameObject();

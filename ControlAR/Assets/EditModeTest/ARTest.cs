@@ -13,10 +13,6 @@ namespace Tests
         public void ARTestSimplePasses()
         {
             // Use the Assert class to test conditions
-            var objectToDestroy = new GameObject("name");
-            var cleanseBeforeObject = new GameObject().AddComponent<PlacingObjects>();
-            cleanseBeforeObject.cleanseBefore("name");
-            Assert.IsFalse(GameObject.Find("name"));
         }
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

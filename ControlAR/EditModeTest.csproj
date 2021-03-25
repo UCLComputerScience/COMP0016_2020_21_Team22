@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\EditModeTest\ARTest.cs" />
+    <Compile Include="Assets\EditModeTest\AzureConnectionTest.cs" />
     <Compile Include="Assets\EditModeTest\NewTestScript.cs" />
     <None Include="Assets\EditModeTest\EditModeTest.asmdef" />
     <Reference Include="UnityEngine">

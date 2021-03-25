@@ -101,7 +101,7 @@ public class LinePlotter : MonoBehaviour
         DrawGraph(plotScale, number_of_data);
 
     }
-    void onThresholdClick()
+    public void onThresholdClick()
     {
         bool b = thresholdCanvas.gameObject.activeSelf;
         thresholdCanvas.gameObject.SetActive(!b);
@@ -137,7 +137,7 @@ public class LinePlotter : MonoBehaviour
         }
         ThresholdUpdate();
     }
-    private void ThresholdUpdate()
+    public void ThresholdUpdate()
     {
         //draw the thresholdsn (limit to decimal numbers for inputfield on unity editor)
         cleanPrevious("not ben");
@@ -221,8 +221,8 @@ public class LinePlotter : MonoBehaviour
         DrawGraph(plotScale, number_of_data);
         ThresholdUpdate();
     }
-    private bool line = true;
-    void onChangeGraphClicked()
+    public bool line = true;
+    public void onChangeGraphClicked()
     {
         //the type of the graph
         line = !line;
@@ -377,7 +377,7 @@ public class LinePlotter : MonoBehaviour
         return minValue;
     }
 
-    private void DrawLine(Vector3 start, Vector3 end, Color startcolor, Color endColor, string name)
+    public void DrawLine(Vector3 start, Vector3 end, Color startcolor, Color endColor, string name)
     {
         GameObject myLine = new GameObject();
         myLine.name = name;
@@ -405,7 +405,7 @@ public class LinePlotter : MonoBehaviour
         return value;
     }
 
-    private float NoDivideZero(float max, float min, float number)
+    public float NoDivideZero(float max, float min, float number)
     {
         float value = 0;
         if (max != min)

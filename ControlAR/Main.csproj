@@ -68,8 +68,8 @@
     <Compile Include="Assets\Scripts\ActionOnMachine.cs" />
     <Compile Include="Assets\Scripts\AddingMachines.cs" />
     <Compile Include="Assets\Scripts\AzureConnection.cs" />
-    <Compile Include="Assets\Scripts\BlobModel.cs" />
     <Compile Include="Assets\Scripts\ButtonControl.cs" />
+    <Compile Include="Assets\Scripts\CSVDownloader.cs" />
     <Compile Include="Assets\Scripts\CSVReader.cs" />
     <Compile Include="Assets\Scripts\ChooseMachine.cs" />
     <Compile Include="Assets\Scripts\DataPlotter.cs" />
@@ -78,7 +78,6 @@
     <Compile Include="Assets\Scripts\LinePlotter.cs" />
     <Compile Include="Assets\Scripts\ObjImporter.cs" />
     <Compile Include="Assets\Scripts\PlacingObjects.cs" />
-    <Compile Include="Assets\Scripts\Program.cs" />
     <Compile Include="Assets\Scripts\Sceneswitch.cs" />
     <Compile Include="Assets\Scripts\SelectMachineForData.cs" />
     <Compile Include="Assets\Scripts\SpotLightControl.cs" />
