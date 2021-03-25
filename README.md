@@ -1,6 +1,6 @@
 # ControlAR
 
-An application that allows you to visualise data coming from IoT devices in AR and also control IoT devices in AR. 
+A mobile application that allows you to visualise data coming from IoT devices in AR and also control IoT devices in AR. 
 
 ## Deployment Manual
 
@@ -12,7 +12,7 @@ Prerequisites:
 
 •	Azure account
 
-•	Mobile Device – specifically Android device (will compile for iOS but application was not designed for iOS) 
+•	Mobile Device – specifically an Android device (will compile for iOS but application was not designed for iOS) 
 
 •	Raspberry Pi 
 
@@ -46,14 +46,14 @@ az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --
 
 Replace the value of the CONNECTION_STRING variable with the device connection string you made a note of earlier. Then save your changes to SimulatedDevice.py.
 
-Create a storage account in Azure:
+### Create a storage account in Azure:
 
 More info on this here:
 https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-cli
 
 create a blob container called: “iotoutput”
 
-Create a stream analytics job in azure to store the data from the Raspberry Pi:
+Create a stream analytics job in Azure to store the data from the Raspberry Pi into a CSV:
 
 More info on this here:
 https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi
