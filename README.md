@@ -68,6 +68,8 @@ Make sure to set the input as the name of the IoT Hub you made earlier and the o
 
 ## Unity App
 
+Open the ControlAR folder in Unity
+
 Input your Azure account connection strings for the storage and IoT Hub in to the "AzureConnnection.cs" script in Unity.
 
 To obtain the IoT Hub connection string you can run the following in the Azure CLI:
