@@ -4,6 +4,8 @@ A mobile application that allows you to visualise data coming from IoT devices i
 
 ## Deployment Manual
 
+NOTE: It is recommended that you download this repo as a zip file rather than clone it, as it uses Git LFS, so it may not clone completely if the GitHub LFS data quota has been used up for the month. 
+
 ### Prerequisites
 
 Prerequisites:
@@ -12,7 +14,7 @@ Prerequisites:
 
 •	Azure account
 
-•	Mobile Device – specifically an Android device (will compile for iOS but application was not designed for iOS) 
+•	Android Device
 
 •	Raspberry Pi 
 
@@ -62,18 +64,19 @@ Make sure to set the input as the IoT Hub and the output as the “iotoutput” 
 
 ## Unity App
 
-Input the connection strings for storage and IoT hub in to the "AzureConnnection" script in Unity.
+Input your Azure account connection strings for the storage and IoT Hub in to the "AzureConnnection.cs" script in Unity.
 
+### Building the app:
 
-Select the target platform as android and then build and run on your android phone!
+Select the target platform as android
 
-## License
+Before building make sure in the player settings:
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+•	Only Graphics API's should be OpenGLES3 
 
-## Acknowledgments
+•	Multithreaded rendering should be turned off 
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+•	Minimum API level should be set too Android 8.0 'Oreo' (API level 26)
+
+<img width="765" alt="Screenshot 2021-03-30 at 07 01 35" src="https://user-images.githubusercontent.com/56094705/112940986-d3503a80-9125-11eb-8731-a4614ccb5606.png">
 
