@@ -48,6 +48,8 @@ az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --
 
 Replace the value of the CONNECTION_STRING variable with the device connection string you made a note of earlier. Then save your changes to SimulatedDevice2.py.
 
+Run the script on Raspberry Pi to start sending data to the IoT Hub
+
 ### Create a storage account in Azure:
 
 More info on this here:
@@ -55,20 +57,34 @@ https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tab
 
 create a blob container called: “iotoutput”
 
-Create a stream analytics job in Azure to store the data from the Raspberry Pi into a CSV:
+### Create a stream analytics job in Azure to store the data from the Raspberry Pi into a CSV:
 
 More info on this here:
 https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-live-data-visualization-in-power-bi
 
-Make sure to set the input as the IoT Hub and the output as the “iotoutput” container you made earlier. It is also very important that you set the “event serialization format” for the output as CSV.
+Make sure to set the input as the name of the IoT Hub you made earlier and the output as the “iotoutput” container you made earlier. It is also very important that you set the “event serialization format” for the output as CSV.
+
+<img width="1551" alt="Screenshot 2021-03-30 at 07 24 03" src="https://user-images.githubusercontent.com/56094705/112943106-f4665a80-9128-11eb-807d-b6588fa3d2ec.png">
 
 ## Unity App
 
 Input your Azure account connection strings for the storage and IoT Hub in to the "AzureConnnection.cs" script in Unity.
 
+To obtain the IoT Hub connection string you can run the following in the Azure CLI:
+
+```
+az iot hub show-connection-string --hub-name {your iot hub name} --policy-name service
+```
+
+To obtain the Storage Account connection string you can run the following command in the Azure CLI:
+
+```
+az storage account show-connection-string --resource-group {your resource group name} --name {your storage account name}
+```
+
 ### Building the app:
 
-Select the target platform as android
+Select the target platform as Android
 
 Before building make sure in the player settings:
 
